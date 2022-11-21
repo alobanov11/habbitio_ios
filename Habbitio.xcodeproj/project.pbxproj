@@ -1,0 +1,582 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E238224C292781830089A9D9 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = E238224B292781830089A9D9 /* App.swift */; };
+		E2382250292781840089A9D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E238224F292781840089A9D9 /* Assets.xcassets */; };
+		E2382255292781840089A9D9 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2382254292781840089A9D9 /* Persistence.swift */; };
+		E2382258292781840089A9D9 /* Habbitio.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E2382256292781840089A9D9 /* Habbitio.xcdatamodeld */; };
+		E238226129278EA00089A9D9 /* HabbitListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E238226029278EA00089A9D9 /* HabbitListView.swift */; };
+		E238226329278EC10089A9D9 /* HabbitEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E238226229278EC10089A9D9 /* HabbitEditView.swift */; };
+		E2382266292792150089A9D9 /* CGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2382265292792150089A9D9 /* CGFloat.swift */; };
+		E2382271292B71E40089A9D9 /* DispatchQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2382270292B71E40089A9D9 /* DispatchQueue.swift */; };
+		E238227A292B90910089A9D9 /* View+ScenePhase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2382279292B90910089A9D9 /* View+ScenePhase.swift */; };
+		E2382282292B97B40089A9D9 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2382281292B97B40089A9D9 /* WidgetKit.framework */; };
+		E2382284292B97B40089A9D9 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2382283292B97B40089A9D9 /* SwiftUI.framework */; };
+		E2382287292B97B40089A9D9 /* HabitioWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2382286292B97B40089A9D9 /* HabitioWidgetBundle.swift */; };
+		E2382289292B97B40089A9D9 /* HabitioWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2382288292B97B40089A9D9 /* HabitioWidget.swift */; };
+		E238228B292B97B50089A9D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E238228A292B97B50089A9D9 /* Assets.xcassets */; };
+		E238228F292B97B50089A9D9 /* HabitioWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = E238227F292B97B40089A9D9 /* HabitioWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		E2382294292B97E00089A9D9 /* DispatchQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2382270292B71E40089A9D9 /* DispatchQueue.swift */; };
+		E2382295292B97E50089A9D9 /* Habbitio.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E2382256292781840089A9D9 /* Habbitio.xcdatamodeld */; };
+		E2382296292B97E90089A9D9 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2382254292781840089A9D9 /* Persistence.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E238228D292B97B50089A9D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E2382240292781830089A9D9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E238227E292B97B40089A9D9;
+			remoteInfo = HabitioWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		E2382293292B97B50089A9D9 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				E238228F292B97B50089A9D9 /* HabitioWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		E2382248292781830089A9D9 /* Habbitio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Habbitio.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E238224B292781830089A9D9 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
+		E238224F292781840089A9D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E2382254292781840089A9D9 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		E2382257292781840089A9D9 /* Habbitio.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Habbitio.xcdatamodel; sourceTree = "<group>"; };
+		E238226029278EA00089A9D9 /* HabbitListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabbitListView.swift; sourceTree = "<group>"; };
+		E238226229278EC10089A9D9 /* HabbitEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabbitEditView.swift; sourceTree = "<group>"; };
+		E2382265292792150089A9D9 /* CGFloat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGFloat.swift; sourceTree = "<group>"; };
+		E2382270292B71E40089A9D9 /* DispatchQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchQueue.swift; sourceTree = "<group>"; };
+		E2382279292B90910089A9D9 /* View+ScenePhase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+ScenePhase.swift"; sourceTree = "<group>"; };
+		E238227F292B97B40089A9D9 /* HabitioWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = HabitioWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		E2382281292B97B40089A9D9 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		E2382283292B97B40089A9D9 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		E2382286292B97B40089A9D9 /* HabitioWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitioWidgetBundle.swift; sourceTree = "<group>"; };
+		E2382288292B97B40089A9D9 /* HabitioWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitioWidget.swift; sourceTree = "<group>"; };
+		E238228A292B97B50089A9D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E238228C292B97B50089A9D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E2382297292BA1EB0089A9D9 /* Habbitio.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Habbitio.entitlements; sourceTree = "<group>"; };
+		E2382298292BA2110089A9D9 /* HabitioWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HabitioWidgetExtension.entitlements; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E2382245292781830089A9D9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E238227C292B97B40089A9D9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E2382284292B97B40089A9D9 /* SwiftUI.framework in Frameworks */,
+				E2382282292B97B40089A9D9 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E238223F292781830089A9D9 = {
+			isa = PBXGroup;
+			children = (
+				E2382298292BA2110089A9D9 /* HabitioWidgetExtension.entitlements */,
+				E238224A292781830089A9D9 /* Habbitio */,
+				E2382285292B97B40089A9D9 /* HabitioWidget */,
+				E2382280292B97B40089A9D9 /* Frameworks */,
+				E2382249292781830089A9D9 /* Products */,
+			);
+			sourceTree = "<group>";
+			usesTabs = 0;
+		};
+		E2382249292781830089A9D9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E2382248292781830089A9D9 /* Habbitio.app */,
+				E238227F292B97B40089A9D9 /* HabitioWidgetExtension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E238224A292781830089A9D9 /* Habbitio */ = {
+			isa = PBXGroup;
+			children = (
+				E2382297292BA1EB0089A9D9 /* Habbitio.entitlements */,
+				E23822642927920A0089A9D9 /* Extensions */,
+				E238224B292781830089A9D9 /* App.swift */,
+				E238224F292781840089A9D9 /* Assets.xcassets */,
+				E2382256292781840089A9D9 /* Habbitio.xcdatamodeld */,
+				E2382254292781840089A9D9 /* Persistence.swift */,
+				E238226029278EA00089A9D9 /* HabbitListView.swift */,
+				E238226229278EC10089A9D9 /* HabbitEditView.swift */,
+			);
+			path = Habbitio;
+			sourceTree = "<group>";
+		};
+		E23822642927920A0089A9D9 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E2382279292B90910089A9D9 /* View+ScenePhase.swift */,
+				E2382265292792150089A9D9 /* CGFloat.swift */,
+				E2382270292B71E40089A9D9 /* DispatchQueue.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E2382280292B97B40089A9D9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E2382281292B97B40089A9D9 /* WidgetKit.framework */,
+				E2382283292B97B40089A9D9 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E2382285292B97B40089A9D9 /* HabitioWidget */ = {
+			isa = PBXGroup;
+			children = (
+				E2382286292B97B40089A9D9 /* HabitioWidgetBundle.swift */,
+				E2382288292B97B40089A9D9 /* HabitioWidget.swift */,
+				E238228A292B97B50089A9D9 /* Assets.xcassets */,
+				E238228C292B97B50089A9D9 /* Info.plist */,
+			);
+			path = HabitioWidget;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E2382247292781830089A9D9 /* Habbitio */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E238225B292781840089A9D9 /* Build configuration list for PBXNativeTarget "Habbitio" */;
+			buildPhases = (
+				E2382244292781830089A9D9 /* Sources */,
+				E2382245292781830089A9D9 /* Frameworks */,
+				E2382246292781830089A9D9 /* Resources */,
+				E2382293292B97B50089A9D9 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E238228E292B97B50089A9D9 /* PBXTargetDependency */,
+			);
+			name = Habbitio;
+			productName = Habbitio;
+			productReference = E2382248292781830089A9D9 /* Habbitio.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E238227E292B97B40089A9D9 /* HabitioWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E2382290292B97B50089A9D9 /* Build configuration list for PBXNativeTarget "HabitioWidgetExtension" */;
+			buildPhases = (
+				E238227B292B97B40089A9D9 /* Sources */,
+				E238227C292B97B40089A9D9 /* Frameworks */,
+				E238227D292B97B40089A9D9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HabitioWidgetExtension;
+			productName = HabitioWidgetExtension;
+			productReference = E238227F292B97B40089A9D9 /* HabitioWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E2382240292781830089A9D9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1410;
+				LastUpgradeCheck = 1410;
+				TargetAttributes = {
+					E2382247292781830089A9D9 = {
+						CreatedOnToolsVersion = 14.1;
+					};
+					E238227E292B97B40089A9D9 = {
+						CreatedOnToolsVersion = 14.1;
+					};
+				};
+			};
+			buildConfigurationList = E2382243292781830089A9D9 /* Build configuration list for PBXProject "Habbitio" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E238223F292781830089A9D9;
+			productRefGroup = E2382249292781830089A9D9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E2382247292781830089A9D9 /* Habbitio */,
+				E238227E292B97B40089A9D9 /* HabitioWidgetExtension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E2382246292781830089A9D9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E2382250292781840089A9D9 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E238227D292B97B40089A9D9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E238228B292B97B50089A9D9 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E2382244292781830089A9D9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E2382255292781840089A9D9 /* Persistence.swift in Sources */,
+				E2382266292792150089A9D9 /* CGFloat.swift in Sources */,
+				E238224C292781830089A9D9 /* App.swift in Sources */,
+				E238226129278EA00089A9D9 /* HabbitListView.swift in Sources */,
+				E238226329278EC10089A9D9 /* HabbitEditView.swift in Sources */,
+				E238227A292B90910089A9D9 /* View+ScenePhase.swift in Sources */,
+				E2382271292B71E40089A9D9 /* DispatchQueue.swift in Sources */,
+				E2382258292781840089A9D9 /* Habbitio.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E238227B292B97B40089A9D9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E2382289292B97B40089A9D9 /* HabitioWidget.swift in Sources */,
+				E2382287292B97B40089A9D9 /* HabitioWidgetBundle.swift in Sources */,
+				E2382294292B97E00089A9D9 /* DispatchQueue.swift in Sources */,
+				E2382295292B97E50089A9D9 /* Habbitio.xcdatamodeld in Sources */,
+				E2382296292B97E90089A9D9 /* Persistence.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E238228E292B97B50089A9D9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E238227E292B97B40089A9D9 /* HabitioWidgetExtension */;
+			targetProxy = E238228D292B97B50089A9D9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		E2382259292781840089A9D9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		E238225A292781840089A9D9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E238225C292781840089A9D9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Habbitio/Habbitio.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = LUY4875ZZ2;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.alobanov11.habbitio;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		E238225D292781840089A9D9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Habbitio/Habbitio.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = LUY4875ZZ2;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.alobanov11.habbitio;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		E2382291292B97B50089A9D9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = HabitioWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = LUY4875ZZ2;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HabitioWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = HabitioWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.alobanov11.habbitio.widget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		E2382292292B97B50089A9D9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = HabitioWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = LUY4875ZZ2;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HabitioWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = HabitioWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.alobanov11.habbitio.widget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E2382243292781830089A9D9 /* Build configuration list for PBXProject "Habbitio" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E2382259292781840089A9D9 /* Debug */,
+				E238225A292781840089A9D9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E238225B292781840089A9D9 /* Build configuration list for PBXNativeTarget "Habbitio" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E238225C292781840089A9D9 /* Debug */,
+				E238225D292781840089A9D9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E2382290292B97B50089A9D9 /* Build configuration list for PBXNativeTarget "HabitioWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E2382291292B97B50089A9D9 /* Debug */,
+				E2382292292B97B50089A9D9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		E2382256292781840089A9D9 /* Habbitio.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				E2382257292781840089A9D9 /* Habbitio.xcdatamodel */,
+			);
+			currentVersion = E2382257292781840089A9D9 /* Habbitio.xcdatamodel */;
+			path = Habbitio.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = E2382240292781830089A9D9 /* Project object */;
+}

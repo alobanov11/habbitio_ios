@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21512" systemVersion="22A380" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Habbit" representedClassName="Habbit" syncable="YES" codeGenerationType="class">
+        <attribute name="createdDate" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="frequency" attributeType="Integer 16" minValueString="1" maxValueString="10" defaultValueString="1" usesScalarValueType="YES"/>
+        <attribute name="title" attributeType="String" minValueString="2" maxValueString="16"/>
+        <relationship name="records" optional="YES" toMany="YES" maxCount="30" deletionRule="Cascade" ordered="YES" destinationEntity="Record" inverseName="habbit" inverseEntity="Record"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="title"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="Record" representedClassName="Record" syncable="YES" codeGenerationType="class">
+        <attribute name="count" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="habbit" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Habbit" inverseName="records" inverseEntity="Habbit"/>
+    </entity>
+</model>
