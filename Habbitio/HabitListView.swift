@@ -86,9 +86,9 @@ private extension HabitListView {
     var gridView: some View {
         LazyVGrid(
             columns: Array(0..<itemsInRow).map { _ in
-                GridItem(.flexible(), spacing: itemsInRow > 2 ? 14 : 28)
+                GridItem(.flexible(), spacing: itemsInRow > 2 ? 16 : 28)
             },
-            spacing: itemsInRow > 2 ? 14 : 28
+            spacing: itemsInRow > 2 ? 16 : 28
         ) {
             ForEach(records) { record in
                 HabitItemView(record: record, isEditing: isEditing, itemsInRow: itemsInRow)
@@ -254,7 +254,7 @@ struct HabitItemView: View {
         .aspectRatio(1, contentMode: .fit)
         .overlay(
             RoundedRectangle(cornerRadius: 24)
-                .stroke(style: StrokeStyle(lineWidth: 4, dash: isEditing ? [5] : []))
+                .stroke(style: StrokeStyle(lineWidth: itemsInRow > 2 ? 2 : 4, dash: isEditing ? [5] : []))
         )
     }
 }

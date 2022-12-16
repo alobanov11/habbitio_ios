@@ -10,7 +10,7 @@ final class PersistenceController: ObservableObject {
     static let preview: PersistenceController = {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
-        for i in 0..<9 {
+        for i in 0..<20 {
             let newHabit = Habit(context: viewContext)
             newHabit.title = "Habit #\(i)"
             newHabit.createdDate = Date()
