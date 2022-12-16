@@ -4,9 +4,10 @@
 
 import SwiftUI
 import WidgetKit
+import CoreData
 
 struct Provider: TimelineProvider {
-    let persistence: Persistence
+    let viewContext: NSManagedObjectContext
 
     func placeholder(in _: Context) -> Entry { .preview }
 
@@ -29,7 +30,7 @@ struct Provider: TimelineProvider {
     private func fetchActivity() -> [Double] {
         let maxDays = 49
         let fetchRequest = Habbit.fetchRequest()
-        let habbits = try? self.persistence.container.viewContext.fetch(fetchRequest)
+        let habbits = try? self.viewContext.fetch(fetchRequest)
         let maxFrequency = habbits?.map { Int($0.frequency) }.reduce(0, +) ?? 0
 
         var activity: [Date: Int] = [:]
@@ -81,10 +82,10 @@ struct HabitioWidgetEntryView: View {
 
 struct HabitioWidget: Widget {
     let kind: String = "HabitioWidget"
-    let persistence = Persistence.shared
+    let persistence = PersistenceController.shared
 
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: kind, provider: Provider(persistence: persistence)) { entry in
+        StaticConfiguration(kind: kind, provider: Provider(viewContext: persistence.container.viewContext)) { entry in
             HabitioWidgetEntryView(entry: entry)
         }
         .configurationDisplayName("Habbitio widget")

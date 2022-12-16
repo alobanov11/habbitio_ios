@@ -4,13 +4,13 @@
 
 import CoreData
 
-final class Persistence: ObservableObject {
-    static let shared = Persistence()
+final class PersistenceController: ObservableObject {
+    static let shared = PersistenceController()
 
-    static var preview: Persistence = {
-        let result = Persistence(inMemory: true)
+    static let preview: PersistenceController = {
+        let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
-        for i in 0 ..< 4 {
+        for i in 0 ..< 5 {
             let newHabbit = Habbit(context: viewContext)
             newHabbit.title = "Habbit #\(i)"
             newHabbit.createdDate = Date()

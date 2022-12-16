@@ -6,14 +6,14 @@ import SwiftUI
 
 @main
 struct HabbitioApp: App {
-    let persistence = Persistence.shared
+    let persistenceController = PersistenceController.shared
 
     var body: some Scene {
         WindowGroup {
             NavigationView {
                 HabbitListView()
             }
-            .environmentObject(persistence)
+            .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
 }

@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		E238224C292781830089A9D9 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = E238224B292781830089A9D9 /* App.swift */; };
 		E2382250292781840089A9D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E238224F292781840089A9D9 /* Assets.xcassets */; };
-		E2382255292781840089A9D9 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2382254292781840089A9D9 /* Persistence.swift */; };
+		E2382255292781840089A9D9 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2382254292781840089A9D9 /* PersistenceController.swift */; };
 		E2382258292781840089A9D9 /* Habbitio.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E2382256292781840089A9D9 /* Habbitio.xcdatamodeld */; };
 		E238226129278EA00089A9D9 /* HabbitListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E238226029278EA00089A9D9 /* HabbitListView.swift */; };
 		E238226329278EC10089A9D9 /* HabbitEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E238226229278EC10089A9D9 /* HabbitEditView.swift */; };
@@ -24,7 +24,7 @@
 		E238228F292B97B50089A9D9 /* HabitioWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = E238227F292B97B40089A9D9 /* HabitioWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E2382294292B97E00089A9D9 /* DispatchQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2382270292B71E40089A9D9 /* DispatchQueue.swift */; };
 		E2382295292B97E50089A9D9 /* Habbitio.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E2382256292781840089A9D9 /* Habbitio.xcdatamodeld */; };
-		E2382296292B97E90089A9D9 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2382254292781840089A9D9 /* Persistence.swift */; };
+		E2382296292B97E90089A9D9 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2382254292781840089A9D9 /* PersistenceController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,7 +55,7 @@
 		E2382248292781830089A9D9 /* Habbitio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Habbitio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E238224B292781830089A9D9 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		E238224F292781840089A9D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		E2382254292781840089A9D9 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		E2382254292781840089A9D9 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		E2382257292781840089A9D9 /* Habbitio.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Habbitio.xcdatamodel; sourceTree = "<group>"; };
 		E238226029278EA00089A9D9 /* HabbitListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabbitListView.swift; sourceTree = "<group>"; };
 		E238226229278EC10089A9D9 /* HabbitEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabbitEditView.swift; sourceTree = "<group>"; };
@@ -122,7 +122,7 @@
 				E238224B292781830089A9D9 /* App.swift */,
 				E238224F292781840089A9D9 /* Assets.xcassets */,
 				E2382256292781840089A9D9 /* Habbitio.xcdatamodeld */,
-				E2382254292781840089A9D9 /* Persistence.swift */,
+				E2382254292781840089A9D9 /* PersistenceController.swift */,
 				E238226029278EA00089A9D9 /* HabbitListView.swift */,
 				E238226229278EC10089A9D9 /* HabbitEditView.swift */,
 			);
@@ -259,7 +259,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E2382255292781840089A9D9 /* Persistence.swift in Sources */,
+				E2382255292781840089A9D9 /* PersistenceController.swift in Sources */,
 				E2382266292792150089A9D9 /* CGFloat.swift in Sources */,
 				E238224C292781830089A9D9 /* App.swift in Sources */,
 				E238226129278EA00089A9D9 /* HabbitListView.swift in Sources */,
@@ -278,7 +278,7 @@
 				E2382287292B97B40089A9D9 /* HabitioWidgetBundle.swift in Sources */,
 				E2382294292B97E00089A9D9 /* DispatchQueue.swift in Sources */,
 				E2382295292B97E50089A9D9 /* Habbitio.xcdatamodeld in Sources */,
-				E2382296292B97E90089A9D9 /* Persistence.swift in Sources */,
+				E2382296292B97E90089A9D9 /* PersistenceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,7 +415,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Habbitio/Habbitio.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = LUY4875ZZ2;
 				ENABLE_PREVIEWS = YES;
@@ -429,7 +429,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.alobanov11.habbitio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -449,7 +449,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Habbitio/Habbitio.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = LUY4875ZZ2;
 				ENABLE_PREVIEWS = YES;
@@ -463,7 +463,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.alobanov11.habbitio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -482,7 +482,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = HabitioWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = LUY4875ZZ2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HabitioWidget/Info.plist;
@@ -494,7 +494,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.alobanov11.habbitio.widget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -511,7 +511,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = HabitioWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = LUY4875ZZ2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HabitioWidget/Info.plist;
@@ -523,7 +523,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.alobanov11.habbitio.widget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

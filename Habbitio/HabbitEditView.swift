@@ -7,8 +7,9 @@ import SwiftUI
 struct HabbitEditView: View {
     var habbit: Habbit?
 
-    @EnvironmentObject private var persistence: Persistence
+    @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.dismiss) private var dismiss
+
     @State private var title = ""
     @State private var frequency = 1
     @State private var error = false
@@ -118,13 +119,13 @@ private extension HabbitEditView {
 
 private extension HabbitEditView {
     func done() {
-        let habbit = self.habbit ?? Habbit(context: self.persistence.container.viewContext)
+        let habbit = self.habbit ?? Habbit(context: self.viewContext)
         habbit.title = self.title
         habbit.frequency = Int16(self.frequency)
         habbit.createdDate = habbit.createdDate ?? Date()
 
         do {
-            try self.persistence.container.viewContext.save()
+            try self.viewContext.save()
             NotificationCenter.default.post(name: .init("changes"), object: nil)
             self.dismiss()
         }
@@ -136,10 +137,10 @@ private extension HabbitEditView {
 
     func delete() {
         guard let habbit = self.habbit else { return }
-        self.persistence.container.viewContext.delete(habbit)
+        self.viewContext.delete(habbit)
 
         do {
-            try self.persistence.container.viewContext.save()
+            try self.viewContext.save()
             NotificationCenter.default.post(name: .init("changes"), object: nil)
             self.dismiss()
         }
