@@ -11,7 +11,7 @@ struct HabbitioApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationView {
-                HabbitListView()
+                HabitListView()
             }
             .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }

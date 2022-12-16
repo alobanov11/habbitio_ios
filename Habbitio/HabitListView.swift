@@ -5,12 +5,12 @@
 import SwiftUI
 import WidgetKit
 
-struct HabbitListView: View {
+struct HabitListView: View {
     private enum SheetRoute: Identifiable, Hashable {
         var id: Int { hashValue }
 
-        case newHabbit
-        case editHabbit(Habbit)
+        case newHabit
+        case editHabit(Habit)
     }
 
     private var itemsInRow: Int {
@@ -33,7 +33,7 @@ struct HabbitListView: View {
     var body: some View {
         ZStack {
             if records.isEmpty {
-                addButton
+                buttonControls
             }
             else {
                 ScrollView {
@@ -41,14 +41,14 @@ struct HabbitListView: View {
                         gridView
                             .padding(24)
 
-                        addButton
+                        buttonControls
                             .padding(.vertical, 24)
                     }
                 }
             }
         }
         .toolbar {
-            ToolbarItem {
+            ToolbarItem(placement: .navigationBarTrailing) {
                 Button(action: { isEditing.toggle() }) {
                     if isEditing {
                         Text("Done")
@@ -63,23 +63,26 @@ struct HabbitListView: View {
         .sheet(item: $sheetRoute) { route in
             NavigationView {
                 switch route {
-                case .newHabbit:
-                    HabbitEditView(habbit: nil)
-                case let .editHabbit(habbit):
-                    HabbitEditView(habbit: habbit)
+                case .newHabit:
+                    HabitEditView(habit: nil)
+                case let .editHabit(habit):
+                    HabitEditView(habit: habit)
                 }
             }
+        }
+        .onReceive(changes) { _ in
+            obtainRecords()
         }
         .onBackground {
             WidgetCenter.shared.reloadAllTimelines()
         }
         .onForeground(obtainRecords)
         .onAppear(perform: obtainRecords)
-        .onReceive(changes) { _ in obtainRecords() }
+
     }
 }
 
-private extension HabbitListView {
+private extension HabitListView {
     var gridView: some View {
         LazyVGrid(
             columns: Array(0..<itemsInRow).map { _ in
@@ -88,7 +91,7 @@ private extension HabbitListView {
             spacing: itemsInRow > 2 ? 14 : 28
         ) {
             ForEach(records) { record in
-                HabbitItemView(record: record, isEditing: isEditing, itemsInRow: itemsInRow)
+                HabitItemView(record: record, isEditing: isEditing, itemsInRow: itemsInRow)
                     .scaleEffect(animatedObject == record.id ? 0.9 : 1)
                     .animation(.spring(response: 0.4, dampingFraction: 0.6))
                     .onTapGesture {
@@ -98,31 +101,65 @@ private extension HabbitListView {
         }
     }
 
-    var addButton: some View {
-        Button(action: { sheetRoute = .newHabbit }) {
-            Label("Add Habbit", systemImage: "plus.circle")
-                .font(.system(.headline, design: .monospaced))
-                .padding()
+    var buttonControls: some View {
+        VStack(spacing: 16) {
+            Button(action: { sheetRoute = .newHabit }) {
+                Label("Add Habit", systemImage: "plus.circle")
+                    .font(.system(.headline, design: .monospaced))
+                    .padding(12)
+            }
+            .background(Capsule().stroke(lineWidth: 2))
+
+            NavigationLink(destination: ArchiveView()) {
+                Text("Archive")
+                    .foregroundColor(Color("Color"))
+                    .font(.system(.callout, design: .monospaced))
+            }
+            .buttonStyle(.borderedProminent)
+            .buttonBorderShape(.capsule)
         }
-        .background(Capsule().stroke(lineWidth: 2))
     }
 }
 
-private extension HabbitListView {
+private extension HabitListView {
     func obtainRecords() {
+        self.viewContext.reset()
+
         do {
-            let fetchRequest = Habbit.fetchRequest()
+            let habitFetchRequest = Habit.fetchRequest()
+            let habitSort = NSSortDescriptor(key: #keyPath(Habit.createdDate), ascending: true)
+            let habitPredicate = NSPredicate(format: "isArchived == %@", NSNumber(value: false))
 
-            let sort = NSSortDescriptor(key: #keyPath(Habbit.createdDate), ascending: true)
-            fetchRequest.sortDescriptors = [sort]
+            habitFetchRequest.sortDescriptors = [habitSort]
+            habitFetchRequest.predicate = habitPredicate
 
-            let habbits = try self.viewContext.fetch(fetchRequest)
-            let maxFrequency = habbits.map { Int($0.frequency) }.reduce(0, +)
+            let reportFetchRequest = Report.fetchRequest()
+            let reportSort = NSSortDescriptor(key: #keyPath(Report.date), ascending: true)
 
-            self.records = habbits.map { habbit -> Record in
+            reportFetchRequest.sortDescriptors = [reportSort]
+
+            let habits = try self.viewContext.fetch(habitFetchRequest)
+            let reports = try self.viewContext.fetch(reportFetchRequest)
+
+            let report: Report
+
+            if let lastReport = reports.last,
+               let date = lastReport.date,
+               Calendar.current.isDateInToday(date)
+            {
+                report = lastReport
+            }
+            else {
+                report = Report(context: self.viewContext)
+                report.date = Date()
+            }
+
+            report.total = habits.map { $0.frequency }.reduce(0, +)
+
+            self.records = habits.map { habit -> Record in
                 let record: Record
 
-                if let currentRecord = habbit.records?.lastObject as? Record,
+                if let currentRecord = habit.records?.lastObject as? Record,
                    let date = currentRecord.date,
                    Calendar.current.isDateInToday(date)
                 {
@@ -131,11 +168,10 @@ private extension HabbitListView {
                 else {
                     record = Record(context: self.viewContext)
                     record.date = Date()
-                    record.habbit = habbit
+                    record.habit = habit
+                    record.report = report
                     record.count = 0
                 }
-
-                record.total = maxFrequency
 
                 return record
             }
@@ -155,8 +191,8 @@ private extension HabbitListView {
 
         onMainThreadAsync(0.2) { self.animatedObject = nil }
 
-        if self.isEditing, let habbit = record.habbit {
-            self.sheetRoute = .editHabbit(habbit)
+        if self.isEditing, let habit = record.habit {
+            self.sheetRoute = .editHabit(habit)
         }
         else {
             self.incrementRecordCounter(record)
@@ -166,7 +202,7 @@ private extension HabbitListView {
     func incrementRecordCounter(_ record: Record) {
         do {
             let value = record.count + 1
-            let maxValue = record.habbit?.frequency ?? 0
+            let maxValue = record.habit?.frequency ?? 0
             record.count = min(value, maxValue)
 
             if value > maxValue {
@@ -183,7 +219,7 @@ private extension HabbitListView {
     }
 }
 
-struct HabbitItemView: View {
+struct HabitItemView: View {
     @ObservedObject var record: Record
 
     var isEditing: Bool
@@ -192,7 +228,7 @@ struct HabbitItemView: View {
     var body: some View {
         VStack {
             HStack {
-                Text(record.habbit?.title ?? "Empty title")
+                Text(record.habit?.title ?? "Empty title")
                     .font(.system(.callout, design: .monospaced))
                     .minimumScaleFactor(0.1)
 
@@ -206,7 +242,7 @@ struct HabbitItemView: View {
                     .font(.system(size: 72, weight: .black, design: .monospaced))
                     .minimumScaleFactor(0.1)
 
-                Text("/ \(record.habbit?.frequency ?? 0)")
+                Text("/ \(record.habit?.frequency ?? 0)")
                     .font(.system(.body, design: .monospaced))
                     .minimumScaleFactor(0.1)
             }
@@ -223,10 +259,10 @@ struct HabbitItemView: View {
     }
 }
 
-struct HabbitListView_Previews: PreviewProvider {
+struct HabitListView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            HabbitListView()
+            HabitListView()
                 .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
         }
     }

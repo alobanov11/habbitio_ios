@@ -6,8 +6,8 @@ import SwiftUI
 import WidgetKit
 
 @main
-struct HabitioWidgetBundle: WidgetBundle {
+struct HabbitioWidgetBundle: WidgetBundle {
     var body: some Widget {
-        HabitioWidget()
+        HabbitioWidget()
     }
 }

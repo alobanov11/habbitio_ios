@@ -3,16 +3,20 @@
 //
 
 import SwiftUI
+import CoreData
 
-struct HabbitEditView: View {
-    var habbit: Habbit?
+struct HabitEditView: View {
+    var habit: Habit?
 
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.dismiss) private var dismiss
 
+    @State private var error: Error? {
+        willSet { onMainThreadAsync(2) { self.error = nil } }
+    }
+
     @State private var title = ""
     @State private var frequency = 1
-    @State private var error = false
     @FocusState private var focused: Bool
 
     var body: some View {
@@ -24,9 +28,15 @@ struct HabbitEditView: View {
 
                 frequencyFieldView
 
-                if habbit != nil {
+                if let error = error {
+                    Text(error.localizedDescription)
+                        .font(.system(.footnote, design: .monospaced))
+                        .foregroundColor(.red)
+                }
+
+                if habit != nil {
                     Button(action: delete) {
-                        Label("Delete Habbit", systemImage: "trash.fill")
+                        Label("Delete Habit", systemImage: "trash.fill")
                             .font(.system(.headline, design: .monospaced))
                             .foregroundColor(.red)
                     }
@@ -36,7 +46,7 @@ struct HabbitEditView: View {
             .padding()
             .padding(.vertical)
         }
-        .navigationTitle(habbit == nil ? "New habbit" : "Edit habbit")
+        .navigationTitle(habit == nil ? "New habit" : "Edit habit")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
@@ -46,7 +56,7 @@ struct HabbitEditView: View {
             }
             ToolbarItem {
                 Button(action: done) {
-                    Text(habbit == nil ? "Add" : "Done")
+                    Text(habit == nil ? "Add" : "Done")
                 }
                 .disabled(title.isEmpty)
             }
@@ -59,15 +69,18 @@ struct HabbitEditView: View {
         .onChange(of: frequency) {
             frequency = max(1, min(5, $0))
         }
+        .onDisappear {
+            NotificationCenter.default.post(name: .init("changes"), object: nil)
+        }
         .onAppear {
             focused = true
-            title = habbit?.title ?? ""
-            frequency = Int(habbit?.frequency ?? 0)
+            title = habit?.title ?? ""
+            frequency = Int(habit?.frequency ?? 0)
         }
     }
 }
 
-private extension HabbitEditView {
+private extension HabitEditView {
     var titleFieldView: some View {
         RoundedRectangle(cornerRadius: 12)
             .stroke(lineWidth: 2)
@@ -97,8 +110,8 @@ private extension HabbitEditView {
                 Button(action: { frequency -= 1 }) {
                     Image(systemName: "minus")
                         .tint(.white)
+                        .frame(width: 36, height: 36)
                 }
-                .frame(width: 36, height: 36)
                 .background(Color.gray.colorInvert().clipShape(Circle()))
                 .disabled(frequency == 1)
 
@@ -108,21 +121,21 @@ private extension HabbitEditView {
                 Button(action: { frequency += 1 }) {
                     Image(systemName: "plus")
                         .tint(.white)
+                        .frame(width: 36, height: 36)
                 }
                 .disabled(frequency == 5)
-                .frame(width: 36, height: 36)
                 .background(Color.gray.colorInvert().clipShape(Circle()))
             }
         }
     }
 }
 
-private extension HabbitEditView {
+private extension HabitEditView {
     func done() {
-        let habbit = self.habbit ?? Habbit(context: self.viewContext)
-        habbit.title = self.title
-        habbit.frequency = Int16(self.frequency)
-        habbit.createdDate = habbit.createdDate ?? Date()
+        let habit = self.habit ?? Habit(context: self.viewContext)
+        habit.title = self.title
+        habit.frequency = Int16(self.frequency)
+        habit.createdDate = habit.createdDate ?? Date()
 
         do {
             try self.viewContext.save()
@@ -130,14 +143,14 @@ private extension HabbitEditView {
             self.dismiss()
         }
         catch {
-            print(error)
-            self.error = true
+            self.error = UnknownError(error: error)
         }
     }
 
     func delete() {
-        guard let habbit = self.habbit else { return }
-        self.viewContext.delete(habbit)
+        guard let habit = self.habit else { return }
+
+        habit.isArchived = true
 
         do {
             try self.viewContext.save()
@@ -145,16 +158,15 @@ private extension HabbitEditView {
             self.dismiss()
         }
         catch {
-            print(error)
-            self.error = true
+            self.error = UnknownError(error: error)
         }
     }
 }
 
-struct HabbitEditView_Previews: PreviewProvider {
+struct HabitEditView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            HabbitEditView()
+            HabitEditView()
         }
     }
 }

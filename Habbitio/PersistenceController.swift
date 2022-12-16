@@ -10,14 +10,15 @@ final class PersistenceController: ObservableObject {
     static let preview: PersistenceController = {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
-        for i in 0 ..< 5 {
-            let newHabbit = Habbit(context: viewContext)
-            newHabbit.title = "Habbit #\(i)"
-            newHabbit.createdDate = Date()
-            newHabbit.frequency = Int16.random(in: 1 ... 5)
+        for i in 0..<9 {
+            let newHabit = Habit(context: viewContext)
+            newHabit.title = "Habit #\(i)"
+            newHabit.createdDate = Date()
+            newHabit.frequency = Int16.random(in: 1 ... 5)
+            newHabit.isArchived = (i % 2 == 0)
 
             let newRecord = Record(context: viewContext)
-            newRecord.habbit = newHabbit
+            newRecord.habit = newHabit
             newRecord.count = Int16.random(in: 1 ... 5)
             newRecord.date = Date()
         }
@@ -48,6 +49,7 @@ final class PersistenceController: ObservableObject {
             let storeURL = self.containerURL.appendingPathComponent("Habbitio.sqlite")
             let description = NSPersistentStoreDescription(url: storeURL)
             self.container.persistentStoreDescriptions = [description]
+            print(storeURL)
         }
         self.container.loadPersistentStores(completionHandler: { _, error in
             if let error = error as NSError? {

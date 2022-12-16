@@ -7,21 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E2269F5C294CB803001FA138 /* UnknownError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2269F5B294CB803001FA138 /* UnknownError.swift */; };
+		E2269F60294D095D001FA138 /* ArchiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2269F5F294D095D001FA138 /* ArchiveView.swift */; };
 		E238224C292781830089A9D9 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = E238224B292781830089A9D9 /* App.swift */; };
 		E2382250292781840089A9D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E238224F292781840089A9D9 /* Assets.xcassets */; };
 		E2382255292781840089A9D9 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2382254292781840089A9D9 /* PersistenceController.swift */; };
 		E2382258292781840089A9D9 /* Habbitio.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E2382256292781840089A9D9 /* Habbitio.xcdatamodeld */; };
-		E238226129278EA00089A9D9 /* HabbitListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E238226029278EA00089A9D9 /* HabbitListView.swift */; };
-		E238226329278EC10089A9D9 /* HabbitEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E238226229278EC10089A9D9 /* HabbitEditView.swift */; };
+		E238226129278EA00089A9D9 /* HabitListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E238226029278EA00089A9D9 /* HabitListView.swift */; };
+		E238226329278EC10089A9D9 /* HabitEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E238226229278EC10089A9D9 /* HabitEditView.swift */; };
 		E2382266292792150089A9D9 /* CGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2382265292792150089A9D9 /* CGFloat.swift */; };
 		E2382271292B71E40089A9D9 /* DispatchQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2382270292B71E40089A9D9 /* DispatchQueue.swift */; };
 		E238227A292B90910089A9D9 /* View+ScenePhase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2382279292B90910089A9D9 /* View+ScenePhase.swift */; };
 		E2382282292B97B40089A9D9 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2382281292B97B40089A9D9 /* WidgetKit.framework */; };
 		E2382284292B97B40089A9D9 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2382283292B97B40089A9D9 /* SwiftUI.framework */; };
-		E2382287292B97B40089A9D9 /* HabitioWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2382286292B97B40089A9D9 /* HabitioWidgetBundle.swift */; };
-		E2382289292B97B40089A9D9 /* HabitioWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2382288292B97B40089A9D9 /* HabitioWidget.swift */; };
+		E2382287292B97B40089A9D9 /* WidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2382286292B97B40089A9D9 /* WidgetBundle.swift */; };
+		E2382289292B97B40089A9D9 /* Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2382288292B97B40089A9D9 /* Widget.swift */; };
 		E238228B292B97B50089A9D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E238228A292B97B50089A9D9 /* Assets.xcassets */; };
-		E238228F292B97B50089A9D9 /* HabitioWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = E238227F292B97B40089A9D9 /* HabitioWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		E238228F292B97B50089A9D9 /* HabbitioWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = E238227F292B97B40089A9D9 /* HabbitioWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E2382294292B97E00089A9D9 /* DispatchQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2382270292B71E40089A9D9 /* DispatchQueue.swift */; };
 		E2382295292B97E50089A9D9 /* Habbitio.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E2382256292781840089A9D9 /* Habbitio.xcdatamodeld */; };
 		E2382296292B97E90089A9D9 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2382254292781840089A9D9 /* PersistenceController.swift */; };
@@ -44,7 +46,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				E238228F292B97B50089A9D9 /* HabitioWidgetExtension.appex in Embed Foundation Extensions */,
+				E238228F292B97B50089A9D9 /* HabbitioWidgetExtension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -52,25 +54,25 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		E2269F5B294CB803001FA138 /* UnknownError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnknownError.swift; sourceTree = "<group>"; };
+		E2269F5F294D095D001FA138 /* ArchiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveView.swift; sourceTree = "<group>"; };
 		E2382248292781830089A9D9 /* Habbitio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Habbitio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E238224B292781830089A9D9 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		E238224F292781840089A9D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E2382254292781840089A9D9 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		E2382257292781840089A9D9 /* Habbitio.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Habbitio.xcdatamodel; sourceTree = "<group>"; };
-		E238226029278EA00089A9D9 /* HabbitListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabbitListView.swift; sourceTree = "<group>"; };
-		E238226229278EC10089A9D9 /* HabbitEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabbitEditView.swift; sourceTree = "<group>"; };
+		E238226029278EA00089A9D9 /* HabitListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitListView.swift; sourceTree = "<group>"; };
+		E238226229278EC10089A9D9 /* HabitEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitEditView.swift; sourceTree = "<group>"; };
 		E2382265292792150089A9D9 /* CGFloat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGFloat.swift; sourceTree = "<group>"; };
 		E2382270292B71E40089A9D9 /* DispatchQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchQueue.swift; sourceTree = "<group>"; };
 		E2382279292B90910089A9D9 /* View+ScenePhase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+ScenePhase.swift"; sourceTree = "<group>"; };
-		E238227F292B97B40089A9D9 /* HabitioWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = HabitioWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		E238227F292B97B40089A9D9 /* HabbitioWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = HabbitioWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2382281292B97B40089A9D9 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		E2382283292B97B40089A9D9 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
-		E2382286292B97B40089A9D9 /* HabitioWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitioWidgetBundle.swift; sourceTree = "<group>"; };
-		E2382288292B97B40089A9D9 /* HabitioWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitioWidget.swift; sourceTree = "<group>"; };
+		E2382286292B97B40089A9D9 /* WidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetBundle.swift; sourceTree = "<group>"; };
+		E2382288292B97B40089A9D9 /* Widget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Widget.swift; sourceTree = "<group>"; };
 		E238228A292B97B50089A9D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E238228C292B97B50089A9D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E2382297292BA1EB0089A9D9 /* Habbitio.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Habbitio.entitlements; sourceTree = "<group>"; };
-		E2382298292BA2110089A9D9 /* HabitioWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HabitioWidgetExtension.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,9 +98,8 @@
 		E238223F292781830089A9D9 = {
 			isa = PBXGroup;
 			children = (
-				E2382298292BA2110089A9D9 /* HabitioWidgetExtension.entitlements */,
 				E238224A292781830089A9D9 /* Habbitio */,
-				E2382285292B97B40089A9D9 /* HabitioWidget */,
+				E2382285292B97B40089A9D9 /* HabbitioWidget */,
 				E2382280292B97B40089A9D9 /* Frameworks */,
 				E2382249292781830089A9D9 /* Products */,
 			);
@@ -109,7 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				E2382248292781830089A9D9 /* Habbitio.app */,
-				E238227F292B97B40089A9D9 /* HabitioWidgetExtension.appex */,
+				E238227F292B97B40089A9D9 /* HabbitioWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -117,14 +118,14 @@
 		E238224A292781830089A9D9 /* Habbitio */ = {
 			isa = PBXGroup;
 			children = (
-				E2382297292BA1EB0089A9D9 /* Habbitio.entitlements */,
 				E23822642927920A0089A9D9 /* Extensions */,
-				E238224B292781830089A9D9 /* App.swift */,
 				E238224F292781840089A9D9 /* Assets.xcassets */,
 				E2382256292781840089A9D9 /* Habbitio.xcdatamodeld */,
 				E2382254292781840089A9D9 /* PersistenceController.swift */,
-				E238226029278EA00089A9D9 /* HabbitListView.swift */,
-				E238226229278EC10089A9D9 /* HabbitEditView.swift */,
+				E238224B292781830089A9D9 /* App.swift */,
+				E238226029278EA00089A9D9 /* HabitListView.swift */,
+				E238226229278EC10089A9D9 /* HabitEditView.swift */,
+				E2269F5F294D095D001FA138 /* ArchiveView.swift */,
 			);
 			path = Habbitio;
 			sourceTree = "<group>";
@@ -135,6 +136,7 @@
 				E2382279292B90910089A9D9 /* View+ScenePhase.swift */,
 				E2382265292792150089A9D9 /* CGFloat.swift */,
 				E2382270292B71E40089A9D9 /* DispatchQueue.swift */,
+				E2269F5B294CB803001FA138 /* UnknownError.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -148,15 +150,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		E2382285292B97B40089A9D9 /* HabitioWidget */ = {
+		E2382285292B97B40089A9D9 /* HabbitioWidget */ = {
 			isa = PBXGroup;
 			children = (
-				E2382286292B97B40089A9D9 /* HabitioWidgetBundle.swift */,
-				E2382288292B97B40089A9D9 /* HabitioWidget.swift */,
-				E238228A292B97B50089A9D9 /* Assets.xcassets */,
 				E238228C292B97B50089A9D9 /* Info.plist */,
+				E238228A292B97B50089A9D9 /* Assets.xcassets */,
+				E2382286292B97B40089A9D9 /* WidgetBundle.swift */,
+				E2382288292B97B40089A9D9 /* Widget.swift */,
 			);
-			path = HabitioWidget;
+			path = HabbitioWidget;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -181,9 +183,9 @@
 			productReference = E2382248292781830089A9D9 /* Habbitio.app */;
 			productType = "com.apple.product-type.application";
 		};
-		E238227E292B97B40089A9D9 /* HabitioWidgetExtension */ = {
+		E238227E292B97B40089A9D9 /* HabbitioWidgetExtension */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E2382290292B97B50089A9D9 /* Build configuration list for PBXNativeTarget "HabitioWidgetExtension" */;
+			buildConfigurationList = E2382290292B97B50089A9D9 /* Build configuration list for PBXNativeTarget "HabbitioWidgetExtension" */;
 			buildPhases = (
 				E238227B292B97B40089A9D9 /* Sources */,
 				E238227C292B97B40089A9D9 /* Frameworks */,
@@ -193,9 +195,9 @@
 			);
 			dependencies = (
 			);
-			name = HabitioWidgetExtension;
+			name = HabbitioWidgetExtension;
 			productName = HabitioWidgetExtension;
-			productReference = E238227F292B97B40089A9D9 /* HabitioWidgetExtension.appex */;
+			productReference = E238227F292B97B40089A9D9 /* HabbitioWidgetExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
@@ -230,7 +232,7 @@
 			projectRoot = "";
 			targets = (
 				E2382247292781830089A9D9 /* Habbitio */,
-				E238227E292B97B40089A9D9 /* HabitioWidgetExtension */,
+				E238227E292B97B40089A9D9 /* HabbitioWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -262,9 +264,11 @@
 				E2382255292781840089A9D9 /* PersistenceController.swift in Sources */,
 				E2382266292792150089A9D9 /* CGFloat.swift in Sources */,
 				E238224C292781830089A9D9 /* App.swift in Sources */,
-				E238226129278EA00089A9D9 /* HabbitListView.swift in Sources */,
-				E238226329278EC10089A9D9 /* HabbitEditView.swift in Sources */,
+				E238226129278EA00089A9D9 /* HabitListView.swift in Sources */,
+				E2269F5C294CB803001FA138 /* UnknownError.swift in Sources */,
+				E238226329278EC10089A9D9 /* HabitEditView.swift in Sources */,
 				E238227A292B90910089A9D9 /* View+ScenePhase.swift in Sources */,
+				E2269F60294D095D001FA138 /* ArchiveView.swift in Sources */,
 				E2382271292B71E40089A9D9 /* DispatchQueue.swift in Sources */,
 				E2382258292781840089A9D9 /* Habbitio.xcdatamodeld in Sources */,
 			);
@@ -274,8 +278,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E2382289292B97B40089A9D9 /* HabitioWidget.swift in Sources */,
-				E2382287292B97B40089A9D9 /* HabitioWidgetBundle.swift in Sources */,
+				E2382289292B97B40089A9D9 /* Widget.swift in Sources */,
+				E2382287292B97B40089A9D9 /* WidgetBundle.swift in Sources */,
 				E2382294292B97E00089A9D9 /* DispatchQueue.swift in Sources */,
 				E2382295292B97E50089A9D9 /* Habbitio.xcdatamodeld in Sources */,
 				E2382296292B97E90089A9D9 /* PersistenceController.swift in Sources */,
@@ -287,7 +291,7 @@
 /* Begin PBXTargetDependency section */
 		E238228E292B97B50089A9D9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = E238227E292B97B40089A9D9 /* HabitioWidgetExtension */;
+			target = E238227E292B97B40089A9D9 /* HabbitioWidgetExtension */;
 			targetProxy = E238228D292B97B50089A9D9 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -480,13 +484,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_ENTITLEMENTS = HabitioWidgetExtension.entitlements;
+				CODE_SIGN_ENTITLEMENTS = HabbitioWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = LUY4875ZZ2;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = HabitioWidget/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = HabitioWidget;
+				INFOPLIST_FILE = HabbitioWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = HabbitioWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -509,13 +513,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_ENTITLEMENTS = HabitioWidgetExtension.entitlements;
+				CODE_SIGN_ENTITLEMENTS = HabbitioWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = LUY4875ZZ2;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = HabitioWidget/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = HabitioWidget;
+				INFOPLIST_FILE = HabbitioWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = HabbitioWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -554,7 +558,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E2382290292B97B50089A9D9 /* Build configuration list for PBXNativeTarget "HabitioWidgetExtension" */ = {
+		E2382290292B97B50089A9D9 /* Build configuration list for PBXNativeTarget "HabbitioWidgetExtension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E2382291292B97B50089A9D9 /* Debug */,

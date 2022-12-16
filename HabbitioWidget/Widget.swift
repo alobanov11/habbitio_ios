@@ -29,11 +29,15 @@ struct Provider: TimelineProvider {
 
     private func fetchActivity() -> [Double] {
         let maxDays = 49
-        let fetchRequest = Habbit.fetchRequest()
-        let habbits = try? self.viewContext.fetch(fetchRequest)
-        let maxFrequency = habbits?.map { Int($0.frequency) }.reduce(0, +) ?? 0
 
-        var activity: [Date: Int] = [:]
+        let fetchRequest = Report.fetchRequest()
+        let sort = NSSortDescriptor(key: #keyPath(Report.date), ascending: true)
+
+        fetchRequest.sortDescriptors = [sort]
+
+        let reports = try? self.viewContext.fetch(fetchRequest)
+
+        var activity: [Date: Double] = [:]
 
         for i in 0 ..< maxDays {
             let date = Calendar.current.date(byAdding: .day, value: -i, to: Date())!
@@ -41,19 +45,20 @@ struct Provider: TimelineProvider {
             activity[startDate] = 0
         }
 
-        for habbit in habbits ?? [] {
-            for record in habbit.records?.suffix(maxDays).compactMap({ $0 as? Record }) ?? [] {
-                let startDate = Calendar.current.startOfDay(for: record.date!)
-                if let value = activity[startDate] {
-                    activity[startDate] = value + Int(record.count)
-                }
+        for report in reports?.suffix(maxDays) ?? [] {
+            let records = report.records?.compactMap { $0 as? Record }.filter { $0.habit?.isArchived == false } ?? []
+            let startDate = Calendar.current.startOfDay(for: report.date!)
+            let total = Double(report.total)
+            let count = records.map { Double($0.count) }.reduce(0, +)
+            if activity[startDate] != nil {
+                activity[startDate] = total != 0 ? count / total : 0
             }
         }
 
         let result = activity
             .map { ($0.key, $0.value) }
             .sorted { $0.0 < $1.0 }
-            .map { maxFrequency != 0 ? Double($0.1) / Double(maxFrequency) : 0 }
+            .map { $0.1 }
 
         return result
     }
@@ -64,7 +69,7 @@ struct Entry: TimelineEntry {
     let activity: [Double]
 }
 
-struct HabitioWidgetEntryView: View {
+struct HabbitioWidgetEntryView: View {
     var entry: Provider.Entry
 
     var body: some View {
@@ -80,13 +85,13 @@ struct HabitioWidgetEntryView: View {
     }
 }
 
-struct HabitioWidget: Widget {
-    let kind: String = "HabitioWidget"
+struct HabbitioWidget: Widget {
+    let kind: String = "HabbitioWidget"
     let persistence = PersistenceController.shared
 
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: Provider(viewContext: persistence.container.viewContext)) { entry in
-            HabitioWidgetEntryView(entry: entry)
+            HabbitioWidgetEntryView(entry: entry)
         }
         .configurationDisplayName("Habbitio widget")
         .description("Widget shows 49 days of your habits activity")
@@ -94,9 +99,9 @@ struct HabitioWidget: Widget {
     }
 }
 
-struct HabitioWidget_Previews: PreviewProvider {
+struct HabbitioWidget_Previews: PreviewProvider {
     static var previews: some View {
-        HabitioWidgetEntryView(entry: .preview)
+        HabbitioWidgetEntryView(entry: .preview)
             .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
 }

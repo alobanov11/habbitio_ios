@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21512" systemVersion="22A380" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Habbit" representedClassName="Habbit" syncable="YES" codeGenerationType="class">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21513" systemVersion="22A400" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Habit" representedClassName="Habit" syncable="YES" codeGenerationType="class">
         <attribute name="createdDate" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="frequency" attributeType="Integer 16" minValueString="1" maxValueString="10" defaultValueString="1" usesScalarValueType="YES"/>
+        <attribute name="isArchived" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="title" attributeType="String" minValueString="2" maxValueString="16"/>
-        <relationship name="records" optional="YES" toMany="YES" maxCount="30" deletionRule="Cascade" ordered="YES" destinationEntity="Record" inverseName="habbit" inverseEntity="Record"/>
+        <relationship name="records" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Record" inverseName="habit" inverseEntity="Record"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="title"/>
@@ -14,6 +15,12 @@
     <entity name="Record" representedClassName="Record" syncable="YES" codeGenerationType="class">
         <attribute name="count" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
-        <relationship name="habbit" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Habbit" inverseName="records" inverseEntity="Habbit"/>
+        <relationship name="habit" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Habit" inverseName="records" inverseEntity="Habit"/>
+        <relationship name="report" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Report" inverseName="records" inverseEntity="Report"/>
+    </entity>
+    <entity name="Report" representedClassName="Report" syncable="YES" codeGenerationType="class">
+        <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="total" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="records" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Record" inverseName="report" inverseEntity="Record"/>
     </entity>
 </model>
