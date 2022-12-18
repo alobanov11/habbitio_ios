@@ -27,6 +27,7 @@
 		E2382294292B97E00089A9D9 /* DispatchQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2382270292B71E40089A9D9 /* DispatchQueue.swift */; };
 		E2382295292B97E50089A9D9 /* Habbitio.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E2382256292781840089A9D9 /* Habbitio.xcdatamodeld */; };
 		E2382296292B97E90089A9D9 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2382254292781840089A9D9 /* PersistenceController.swift */; };
+		E2EAA704294F1E2B0081AEBB /* View+Hidden.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EAA703294F1E2B0081AEBB /* View+Hidden.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		E2382288292B97B40089A9D9 /* Widget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Widget.swift; sourceTree = "<group>"; };
 		E238228A292B97B50089A9D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E238228C292B97B50089A9D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E2EAA703294F1E2B0081AEBB /* View+Hidden.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Hidden.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				E2382279292B90910089A9D9 /* View+ScenePhase.swift */,
+				E2EAA703294F1E2B0081AEBB /* View+Hidden.swift */,
 				E2382265292792150089A9D9 /* CGFloat.swift */,
 				E2382270292B71E40089A9D9 /* DispatchQueue.swift */,
 				E2269F5B294CB803001FA138 /* UnknownError.swift */,
@@ -271,6 +274,7 @@
 				E2269F60294D095D001FA138 /* ArchiveView.swift in Sources */,
 				E2382271292B71E40089A9D9 /* DispatchQueue.swift in Sources */,
 				E2382258292781840089A9D9 /* Habbitio.xcdatamodeld in Sources */,
+				E2EAA704294F1E2B0081AEBB /* View+Hidden.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

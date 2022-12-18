@@ -10,17 +10,20 @@ final class PersistenceController: ObservableObject {
     static let preview: PersistenceController = {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
-        for i in 0..<20 {
-            let newHabit = Habit(context: viewContext)
-            newHabit.title = "Habit #\(i)"
-            newHabit.createdDate = Date()
-            newHabit.frequency = Int16.random(in: 1 ... 5)
-            newHabit.isArchived = (i % 2 == 0)
+        for a in 0..<2 {
+            for i in 0..<8 {
+                let newHabit = Habit(context: viewContext)
+                newHabit.title = "Habit #\(i)-\(a)"
+                newHabit.category = "Category #\(a)"
+                newHabit.createdDate = Date()
+                newHabit.frequency = Int16.random(in: 1 ... 5)
+                newHabit.isArchived = (i % 2 == 0)
 
-            let newRecord = Record(context: viewContext)
-            newRecord.habit = newHabit
-            newRecord.count = Int16.random(in: 1 ... 5)
-            newRecord.date = Date()
+                let newRecord = Record(context: viewContext)
+                newRecord.habit = newHabit
+                newRecord.count = Int16.random(in: 1 ... 5)
+                newRecord.date = Date()
+            }
         }
         do {
             try viewContext.save()

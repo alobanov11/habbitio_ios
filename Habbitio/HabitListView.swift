@@ -13,11 +13,10 @@ struct HabitListView: View {
         case editHabit(Habit)
     }
 
-    private var itemsInRow: Int {
-        switch records.count {
-        case ...6: return 2
-        default: return 3
-        }
+    private var currentWeekday: String {
+        Calendar.current.shortWeekdaySymbols[
+            Calendar.current.component(.weekday, from: .now) - 1
+        ]
     }
 
     @Environment(\.managedObjectContext) private var viewContext
@@ -50,12 +49,8 @@ struct HabitListView: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button(action: { isEditing.toggle() }) {
-                    if isEditing {
-                        Text("Done")
-                    }
-                    else {
-                        Text("Edit")
-                    }
+                    Text(isEditing ? "Done" : "Edit")
+                        .font(.system(.body, design: .monospaced))
                 }
                 .disabled(records.isEmpty)
             }
@@ -77,26 +72,50 @@ struct HabitListView: View {
             WidgetCenter.shared.reloadAllTimelines()
         }
         .onForeground(obtainRecords)
-        .onAppear(perform: obtainRecords)
-
+        .onAppear {
+            requestNotificationStatus()
+            obtainRecords()
+        }
     }
 }
 
 private extension HabitListView {
     var gridView: some View {
-        LazyVGrid(
-            columns: Array(0..<itemsInRow).map { _ in
-                GridItem(.flexible(), spacing: itemsInRow > 2 ? 16 : 28)
-            },
-            spacing: itemsInRow > 2 ? 16 : 28
-        ) {
-            ForEach(records) { record in
-                HabitItemView(record: record, isEditing: isEditing, itemsInRow: itemsInRow)
-                    .scaleEffect(animatedObject == record.id ? 0.9 : 1)
-                    .animation(.spring(response: 0.4, dampingFraction: 0.6))
-                    .onTapGesture {
-                        selectRecord(record)
+        VStack(spacing: 24) {
+            let sections = records
+                .reduce(into: [String: [Record]]()) { $0[$1.habit?.category ?? "", default: []].append($1) }
+                .map { ($0.key, $0.value) }
+                .sorted { $0.0 > $1.0 }
+
+            ForEach(sections, id: \.0) { (title, records) in
+                VStack {
+                    HStack {
+                        Text(title)
+                            .font(.system(.headline, design: .monospaced))
+
+                        Spacer()
                     }
+                    .hidden(title.isEmpty)
+
+                    LazyVGrid(
+                        columns: [
+                            GridItem(.flexible(), spacing: 16),
+                            GridItem(.flexible(), spacing: 16),
+                            GridItem(.flexible(), spacing: 16),
+                        ],
+                        spacing: 16
+                    ) {
+                        ForEach(records) { record in
+                            HabitItemView(record: record, isEditing: isEditing)
+                                .opacity((record.habit?.days ?? []).contains(currentWeekday) ? 1 : 0.5)
+                                .scaleEffect(animatedObject == record.id ? 0.9 : 1)
+                                .animation(.spring(response: 0.4, dampingFraction: 0.6))
+                                .onTapGesture {
+                                    selectRecord(record)
+                                }
+                        }
+                    }
+                }
             }
         }
     }
@@ -154,7 +173,10 @@ private extension HabitListView {
                 report.date = Date()
             }
 
-            report.total = habits.map { $0.frequency }.reduce(0, +)
+            report.total = habits
+                .filter { ($0.days ?? []).contains(self.currentWeekday) }
+                .map { $0.frequency }
+                .reduce(0, +)
 
             self.records = habits.map { habit -> Record in
                 let record: Record
@@ -194,6 +216,10 @@ private extension HabitListView {
         if self.isEditing, let habit = record.habit {
             self.sheetRoute = .editHabit(habit)
         }
+        else if (record.habit?.days ?? []).contains(self.currentWeekday) == false {
+            let generator = UINotificationFeedbackGenerator()
+            generator.notificationOccurred(.warning)
+        }
         else {
             self.incrementRecordCounter(record)
         }
@@ -217,13 +243,16 @@ private extension HabitListView {
             self.error = true
         }
     }
+
+    func requestNotificationStatus() {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.sound, .alert, .badge]) { _, _ in }
+    }
 }
 
 struct HabitItemView: View {
     @ObservedObject var record: Record
 
     var isEditing: Bool
-    var itemsInRow: Int
 
     var body: some View {
         VStack {
@@ -249,12 +278,12 @@ struct HabitItemView: View {
 
             Spacer()
         }
-        .padding(itemsInRow > 2 ? 16 : 24)
+        .padding(16)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .aspectRatio(1, contentMode: .fit)
         .overlay(
             RoundedRectangle(cornerRadius: 24)
-                .stroke(style: StrokeStyle(lineWidth: itemsInRow > 2 ? 2 : 4, dash: isEditing ? [5] : []))
+                .stroke(style: StrokeStyle(lineWidth: 2, dash: isEditing ? [5] : []))
         )
     }
 }
