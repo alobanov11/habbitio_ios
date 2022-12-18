@@ -8,7 +8,7 @@ import UserNotifications
 
 struct HabitEditView: View {
     private enum Field {
-        case title, category
+        case title, category, remainderText
     }
 
     var habit: Habit?
@@ -297,6 +297,7 @@ private extension HabitEditView {
                     .overlay {
                         TextField("Remainder text", text: $reminderText)
                             .font(.system(.footnote, design: .monospaced))
+                            .focused($focusedField, equals: .remainderText)
                             .offset(x: 12)
                     }
             }
