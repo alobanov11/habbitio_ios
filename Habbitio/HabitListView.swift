@@ -107,7 +107,7 @@ private extension HabitListView {
                     ) {
                         ForEach(records) { record in
                             HabitItemView(record: record, isEditing: isEditing)
-                                .opacity((record.habit?.days ?? []).contains(currentWeekday) ? 1 : 0.5)
+                                .opacity(record.isEnabled ? 1 : 0.5)
                                 .scaleEffect(animatedObject == record.id ? 0.9 : 1)
                                 .animation(.spring(response: 0.4, dampingFraction: 0.6))
                                 .onTapGesture {
@@ -198,25 +198,13 @@ private extension HabitListView {
                 else {
                     record = Record(context: self.viewContext)
                     record.date = Date()
+                    record.isEnabled = (habit.days ?? []).contains(currentWeekday)
                     record.habit = habit
                     record.report = report
-                    record.count = 0
                 }
 
                 return record
             }
-
-            let total = habits
-                .filter { ($0.days ?? []).contains(self.currentWeekday) }
-                .map { $0.frequency }
-                .reduce(0, +)
-
-            let count = records
-                .filter { ($0.habit?.days ?? []).contains(self.currentWeekday) }
-                .map { $0.count }
-                .reduce(0, +)
-
-            report.rate = total > 0 ? Double(count) / Double(total) : 0
 
             self.records = records
 
@@ -243,37 +231,13 @@ private extension HabitListView {
             generator.notificationOccurred(.warning)
         }
         else {
-            self.incrementRecordCounter(record)
+            self.doneRecord(record)
         }
     }
 
-    func incrementRecordCounter(_ record: Record) {
+    func doneRecord(_ record: Record) {
         do {
-            let value = record.count + 1
-            let maxValue = record.habit?.frequency ?? 0
-            record.count = min(value, maxValue)
-
-            let report = record.report
-            let records = report?.records?.compactMap { $0 as? Record } ?? []
-            let habits = records.compactMap { $0.habit }
-
-            let total = habits
-                .filter { ($0.days ?? []).contains(self.currentWeekday) }
-                .map { $0.frequency }
-                .reduce(0, +)
-
-            let count = records
-                .filter { ($0.habit?.days ?? []).contains(self.currentWeekday) }
-                .map { $0.count }
-                .reduce(0, +)
-
-            report?.rate = total > 0 ? Double(count) / Double(total) : 0
-
-            if value > maxValue {
-                let generator = UINotificationFeedbackGenerator()
-                generator.notificationOccurred(.error)
-            }
-
+            record.done = true
             try self.viewContext.save()
         }
         catch {
@@ -294,25 +258,11 @@ struct HabitItemView: View {
 
     var body: some View {
         VStack {
-            HStack {
-                Text(record.habit?.title ?? "Empty title")
-                    .font(.system(.callout, design: .monospaced))
-                    .minimumScaleFactor(0.1)
-
-                Spacer()
-            }
-
             Spacer()
 
-            HStack(alignment: .firstTextBaseline) {
-                Text("\(record.count)")
-                    .font(.system(size: 72, weight: .black, design: .monospaced))
-                    .minimumScaleFactor(0.1)
-
-                Text("/ \(record.habit?.frequency ?? 0)")
-                    .font(.system(.body, design: .monospaced))
-                    .minimumScaleFactor(0.1)
-            }
+            Text(record.habit?.title ?? "Empty title")
+                .font(.system(.callout, design: .monospaced))
+                .minimumScaleFactor(0.1)
 
             Spacer()
         }

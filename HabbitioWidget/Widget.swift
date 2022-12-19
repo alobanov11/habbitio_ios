@@ -47,6 +47,7 @@ struct Provider: TimelineProvider {
 
         for report in reports?.suffix(maxDays) ?? [] {
             let startDate = Calendar.current.startOfDay(for: report.date!)
+
             if activity[startDate] != nil {
                 activity[startDate] = report.rate
             }

@@ -28,6 +28,9 @@
 		E2382295292B97E50089A9D9 /* Habbitio.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E2382256292781840089A9D9 /* Habbitio.xcdatamodeld */; };
 		E2382296292B97E90089A9D9 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2382254292781840089A9D9 /* PersistenceController.swift */; };
 		E271961B2950BBA8000A961A /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E271961A2950BBA8000A961A /* StatsView.swift */; };
+		E271961F2950D8E4000A961A /* Report+Rate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E271961E2950D8E4000A961A /* Report+Rate.swift */; };
+		E27196202950D90E000A961A /* Report+Rate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E271961E2950D8E4000A961A /* Report+Rate.swift */; };
+		E27196222950DB99000A961A /* Habit+Rate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27196212950DB99000A961A /* Habit+Rate.swift */; };
 		E2EAA704294F1E2B0081AEBB /* View+Hidden.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EAA703294F1E2B0081AEBB /* View+Hidden.swift */; };
 /* End PBXBuildFile section */
 
@@ -76,6 +79,8 @@
 		E238228A292B97B50089A9D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E238228C292B97B50089A9D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E271961A2950BBA8000A961A /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
+		E271961E2950D8E4000A961A /* Report+Rate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Report+Rate.swift"; sourceTree = "<group>"; };
+		E27196212950DB99000A961A /* Habit+Rate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Habit+Rate.swift"; sourceTree = "<group>"; };
 		E2EAA703294F1E2B0081AEBB /* View+Hidden.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Hidden.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -143,6 +148,8 @@
 				E2382265292792150089A9D9 /* CGFloat.swift */,
 				E2382270292B71E40089A9D9 /* DispatchQueue.swift */,
 				E2269F5B294CB803001FA138 /* UnknownError.swift */,
+				E271961E2950D8E4000A961A /* Report+Rate.swift */,
+				E27196212950DB99000A961A /* Habit+Rate.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -270,6 +277,7 @@
 				E2382255292781840089A9D9 /* PersistenceController.swift in Sources */,
 				E2382266292792150089A9D9 /* CGFloat.swift in Sources */,
 				E238224C292781830089A9D9 /* App.swift in Sources */,
+				E271961F2950D8E4000A961A /* Report+Rate.swift in Sources */,
 				E238226129278EA00089A9D9 /* HabitListView.swift in Sources */,
 				E2269F5C294CB803001FA138 /* UnknownError.swift in Sources */,
 				E238226329278EC10089A9D9 /* HabitEditView.swift in Sources */,
@@ -278,6 +286,7 @@
 				E271961B2950BBA8000A961A /* StatsView.swift in Sources */,
 				E2382271292B71E40089A9D9 /* DispatchQueue.swift in Sources */,
 				E2382258292781840089A9D9 /* Habbitio.xcdatamodeld in Sources */,
+				E27196222950DB99000A961A /* Habit+Rate.swift in Sources */,
 				E2EAA704294F1E2B0081AEBB /* View+Hidden.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -289,6 +298,7 @@
 				E2382289292B97B40089A9D9 /* Widget.swift in Sources */,
 				E2382287292B97B40089A9D9 /* WidgetBundle.swift in Sources */,
 				E2382294292B97E00089A9D9 /* DispatchQueue.swift in Sources */,
+				E27196202950D90E000A961A /* Report+Rate.swift in Sources */,
 				E2382295292B97E50089A9D9 /* Habbitio.xcdatamodeld in Sources */,
 				E2382296292B97E90089A9D9 /* PersistenceController.swift in Sources */,
 			);

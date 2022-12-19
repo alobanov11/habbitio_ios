@@ -4,7 +4,6 @@
         <attribute name="category" optional="YES" attributeType="String"/>
         <attribute name="createdDate" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="days" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer" customClassName="[String]"/>
-        <attribute name="frequency" attributeType="Integer 16" minValueString="1" maxValueString="10" defaultValueString="1" usesScalarValueType="YES"/>
         <attribute name="isArchived" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="isRemainderOn" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="notifications" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer" customClassName="[String]"/>
@@ -19,14 +18,14 @@
         </uniquenessConstraints>
     </entity>
     <entity name="Record" representedClassName="Record" syncable="YES" codeGenerationType="class">
-        <attribute name="count" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="done" attributeType="Boolean" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="isEnabled" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
         <relationship name="habit" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Habit" inverseName="records" inverseEntity="Habit"/>
         <relationship name="report" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Report" inverseName="records" inverseEntity="Report"/>
     </entity>
     <entity name="Report" representedClassName="Report" syncable="YES" codeGenerationType="class">
         <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="rate" attributeType="Double" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="records" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Record" inverseName="report" inverseEntity="Record"/>
     </entity>
 </model>

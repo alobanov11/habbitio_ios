@@ -22,7 +22,6 @@ struct HabitEditView: View {
 
     @State private var title = ""
     @State private var category = ""
-    @State private var frequency = 1
     @State private var isReminderOn = false
     @State private var reminderDate = Date()
     @State private var reminderText = ""
@@ -39,10 +38,6 @@ struct HabitEditView: View {
 
                     categoryFieldView
                 }
-
-                Divider()
-
-                frequencyFieldView
 
                 Divider()
 
@@ -119,9 +114,6 @@ struct HabitEditView: View {
                 category = String($0.prefix(16))
             }
         }
-        .onChange(of: frequency) {
-            frequency = max(1, min(5, $0))
-        }
         .onDisappear {
             NotificationCenter.default.post(name: .init("changes"), object: nil)
         }
@@ -130,7 +122,6 @@ struct HabitEditView: View {
             focusedField = .title
             title = habit?.title ?? ""
             category = habit?.category ?? ""
-            frequency = Int(habit?.frequency ?? 0)
             days = Set(habit?.days ?? [])
             isReminderOn = habit?.isRemainderOn ?? false
             reminderDate = habit?.reminderDate ?? .now
@@ -173,43 +164,6 @@ private extension HabitEditView {
                         .focused($focusedField, equals: .category)
                         .offset(x: 12)
                 }
-        }
-    }
-
-    var frequencyFieldView: some View {
-        HStack {
-            VStack(alignment: .leading, spacing: 6) {
-                Text("Frequency")
-                    .font(.system(.callout, design: .monospaced))
-                    .fontWeight(.bold)
-
-                Text("Times a day")
-                    .foregroundColor(.gray)
-                    .font(.system(.footnote, design: .monospaced))
-            }
-
-            Spacer()
-
-            HStack(spacing: 16) {
-                Button(action: { frequency -= 1 }) {
-                    Image(systemName: "minus")
-                        .tint(Color("Color"))
-                        .frame(width: 36, height: 36)
-                }
-                .background(Color.accentColor.clipShape(Circle()))
-                .disabled(frequency == 1)
-
-                Text("\(frequency)")
-                    .font(.system(.body, design: .monospaced))
-
-                Button(action: { frequency += 1 }) {
-                    Image(systemName: "plus")
-                        .tint(Color("Color"))
-                        .frame(width: 36, height: 36)
-                }
-                .disabled(frequency == 5)
-                .background(Color.accentColor.clipShape(Circle()))
-            }
         }
     }
 
@@ -314,7 +268,6 @@ private extension HabitEditView {
         let habit = self.habit ?? Habit(context: self.viewContext)
         habit.title = self.title
         habit.category = self.category
-        habit.frequency = Int16(self.frequency)
         habit.days = Array(self.days)
         habit.reminderDate = self.reminderDate
         habit.reminderText = self.reminderText

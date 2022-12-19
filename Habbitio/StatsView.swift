@@ -43,7 +43,7 @@ struct StatsView: View {
             Section {
                 Chart(reports.suffix(period.rawValue)) {
                     LineMark(
-                        x: .value("Date", $0.date!),
+                        x: .value("Date", $0.date ?? .now),
                         y: .value("Rate", $0.rate)
                     )
                 }
@@ -52,13 +52,9 @@ struct StatsView: View {
 
             Section {
                 Chart(habits) {
-                    let rate = ($0.records?.suffix(period.rawValue).compactMap { $0 as? Record } ?? [])
-                        .map { $0.count }
-                        .reduce(0, +)
-
                     BarMark(
                         x: .value("Name", $0.title ?? ""),
-                        y: .value("Rate", rate)
+                        y: .value("Total", $0.rate(for: period.rawValue))
                     )
                 }
                 .frame(height: 250)
