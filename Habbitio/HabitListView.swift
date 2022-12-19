@@ -107,7 +107,7 @@ private extension HabitListView {
                     ) {
                         ForEach(records) { record in
                             HabitItemView(record: record, isEditing: isEditing)
-                                .opacity(record.isEnabled ? 1 : 0.5)
+                                .opacity(record.isEnabled == false ? 0.5 : record.done ? 0.5 : 1)
                                 .scaleEffect(animatedObject == record.id ? 0.9 : 1)
                                 .animation(.spring(response: 0.4, dampingFraction: 0.6))
                                 .onTapGesture {
@@ -237,7 +237,7 @@ private extension HabitListView {
 
     func doneRecord(_ record: Record) {
         do {
-            record.done = true
+            record.done.toggle()
             try self.viewContext.save()
         }
         catch {
@@ -261,7 +261,9 @@ struct HabitItemView: View {
             Spacer()
 
             Text(record.habit?.title ?? "Empty title")
-                .font(.system(.callout, design: .monospaced))
+                .multilineTextAlignment(.center)
+                .font(.system(.footnote, design: .monospaced))
+                .fontWeight(.bold)
                 .minimumScaleFactor(0.1)
 
             Spacer()
@@ -272,6 +274,7 @@ struct HabitItemView: View {
         .overlay(
             RoundedRectangle(cornerRadius: 24)
                 .stroke(style: StrokeStyle(lineWidth: 2, dash: isEditing ? [5] : []))
+                .fill(record.done ? Color.green : Color.accentColor)
         )
     }
 }
