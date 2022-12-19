@@ -394,10 +394,11 @@ private extension HabitEditView {
     }
 }
 
-struct HabitEditView_Previews: PreviewProvider {
+struct HabitEditPreview: PreviewProvider {
     static var previews: some View {
         NavigationView {
             HabitEditView()
         }
+        .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }

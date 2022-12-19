@@ -84,7 +84,7 @@ struct ArchivePreview: PreviewProvider {
     static var previews: some View {
         NavigationView {
             ArchiveView()
-                .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
         }
+        .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }

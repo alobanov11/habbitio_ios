@@ -27,6 +27,7 @@
 		E2382294292B97E00089A9D9 /* DispatchQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2382270292B71E40089A9D9 /* DispatchQueue.swift */; };
 		E2382295292B97E50089A9D9 /* Habbitio.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E2382256292781840089A9D9 /* Habbitio.xcdatamodeld */; };
 		E2382296292B97E90089A9D9 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2382254292781840089A9D9 /* PersistenceController.swift */; };
+		E271961B2950BBA8000A961A /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E271961A2950BBA8000A961A /* StatsView.swift */; };
 		E2EAA704294F1E2B0081AEBB /* View+Hidden.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EAA703294F1E2B0081AEBB /* View+Hidden.swift */; };
 /* End PBXBuildFile section */
 
@@ -74,6 +75,7 @@
 		E2382288292B97B40089A9D9 /* Widget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Widget.swift; sourceTree = "<group>"; };
 		E238228A292B97B50089A9D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E238228C292B97B50089A9D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E271961A2950BBA8000A961A /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
 		E2EAA703294F1E2B0081AEBB /* View+Hidden.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Hidden.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -128,6 +130,7 @@
 				E238226029278EA00089A9D9 /* HabitListView.swift */,
 				E238226229278EC10089A9D9 /* HabitEditView.swift */,
 				E2269F5F294D095D001FA138 /* ArchiveView.swift */,
+				E271961A2950BBA8000A961A /* StatsView.swift */,
 			);
 			path = Habbitio;
 			sourceTree = "<group>";
@@ -272,6 +275,7 @@
 				E238226329278EC10089A9D9 /* HabitEditView.swift in Sources */,
 				E238227A292B90910089A9D9 /* View+ScenePhase.swift in Sources */,
 				E2269F60294D095D001FA138 /* ArchiveView.swift in Sources */,
+				E271961B2950BBA8000A961A /* StatsView.swift in Sources */,
 				E2382271292B71E40089A9D9 /* DispatchQueue.swift in Sources */,
 				E2382258292781840089A9D9 /* Habbitio.xcdatamodeld in Sources */,
 				E2EAA704294F1E2B0081AEBB /* View+Hidden.swift in Sources */,

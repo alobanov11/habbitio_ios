@@ -32,19 +32,19 @@ struct HabitListView: View {
     var body: some View {
         ZStack {
             if records.isEmpty {
-                buttonControls
+                Text("Add your first habit")
+                    .font(.system(.body, design: .monospaced))
             }
             else {
                 ScrollView {
-                    VStack {
-                        gridView
-                            .padding(24)
-
-                        buttonControls
-                            .padding(.vertical, 24)
-                    }
+                    gridView
+                        .padding(24)
+                        .padding(.bottom, 96)
                 }
             }
+
+            buttonControls
+                .padding(.vertical, 24)
         }
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
@@ -121,22 +121,35 @@ private extension HabitListView {
     }
 
     var buttonControls: some View {
-        VStack(spacing: 16) {
-            Button(action: { sheetRoute = .newHabit }) {
-                Label("Add Habit", systemImage: "plus.circle")
-                    .font(.system(.headline, design: .monospaced))
-                    .padding(12)
-            }
-            .background(Capsule().stroke(lineWidth: 2))
+        HStack {
+            Spacer()
 
             NavigationLink(destination: ArchiveView()) {
                 Text("Archive")
-                    .foregroundColor(Color("Color"))
                     .font(.system(.callout, design: .monospaced))
             }
-            .buttonStyle(.borderedProminent)
-            .buttonBorderShape(.capsule)
+
+            Spacer()
+
+            Button(action: { sheetRoute = .newHabit }) {
+                Text("Add habit")
+                    .foregroundColor(Color("Color"))
+                    .font(.system(.callout, design: .monospaced))
+                    .padding(.vertical, 8)
+                    .padding(.horizontal, 12)
+            }
+            .background(Capsule().fill(Color.accentColor))
+
+            Spacer()
+
+            NavigationLink(destination: StatsView()) {
+                Text("Stats")
+                    .font(.system(.callout, design: .monospaced))
+            }
+
+            Spacer()
         }
+        .frame(maxHeight: .infinity, alignment: .bottom)
     }
 }
 
@@ -173,12 +186,7 @@ private extension HabitListView {
                 report.date = Date()
             }
 
-            report.total = habits
-                .filter { ($0.days ?? []).contains(self.currentWeekday) }
-                .map { $0.frequency }
-                .reduce(0, +)
-
-            self.records = habits.map { habit -> Record in
+            let records = habits.map { habit -> Record in
                 let record: Record
 
                 if let currentRecord = habit.records?.lastObject as? Record,
@@ -197,6 +205,20 @@ private extension HabitListView {
 
                 return record
             }
+
+            let total = habits
+                .filter { ($0.days ?? []).contains(self.currentWeekday) }
+                .map { $0.frequency }
+                .reduce(0, +)
+
+            let count = records
+                .filter { ($0.habit?.days ?? []).contains(self.currentWeekday) }
+                .map { $0.count }
+                .reduce(0, +)
+
+            report.rate = total > 0 ? Double(count) / Double(total) : 0
+
+            self.records = records
 
             if self.viewContext.hasChanges {
                 try self.viewContext.save()
@@ -230,6 +252,22 @@ private extension HabitListView {
             let value = record.count + 1
             let maxValue = record.habit?.frequency ?? 0
             record.count = min(value, maxValue)
+
+            let report = record.report
+            let records = report?.records?.compactMap { $0 as? Record } ?? []
+            let habits = records.compactMap { $0.habit }
+
+            let total = habits
+                .filter { ($0.days ?? []).contains(self.currentWeekday) }
+                .map { $0.frequency }
+                .reduce(0, +)
+
+            let count = records
+                .filter { ($0.habit?.days ?? []).contains(self.currentWeekday) }
+                .map { $0.count }
+                .reduce(0, +)
+
+            report?.rate = total > 0 ? Double(count) / Double(total) : 0
 
             if value > maxValue {
                 let generator = UINotificationFeedbackGenerator()
@@ -288,11 +326,11 @@ struct HabitItemView: View {
     }
 }
 
-struct HabitListView_Previews: PreviewProvider {
+struct HabitListPreview: PreviewProvider {
     static var previews: some View {
         NavigationView {
             HabitListView()
-                .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
         }
+        .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }

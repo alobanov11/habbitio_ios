@@ -19,10 +19,15 @@ final class PersistenceController: ObservableObject {
                 newHabit.frequency = Int16.random(in: 1 ... 5)
                 newHabit.isArchived = (i % 2 == 0)
 
+                let report = Report(context: viewContext)
+                report.date = Calendar.current.date(byAdding: .day, value: -i, to: Date())
+                report.rate = Double.random(in: 0...1)
+
                 let newRecord = Record(context: viewContext)
                 newRecord.habit = newHabit
                 newRecord.count = Int16.random(in: 1 ... 5)
                 newRecord.date = Date()
+                newRecord.report = report
             }
         }
         do {

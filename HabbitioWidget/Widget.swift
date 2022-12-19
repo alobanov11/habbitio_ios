@@ -46,12 +46,9 @@ struct Provider: TimelineProvider {
         }
 
         for report in reports?.suffix(maxDays) ?? [] {
-            let records = report.records?.compactMap { $0 as? Record }.filter { $0.habit?.isArchived == false } ?? []
             let startDate = Calendar.current.startOfDay(for: report.date!)
-            let total = Double(report.total)
-            let count = records.map { Double($0.count) }.reduce(0, +)
             if activity[startDate] != nil {
-                activity[startDate] = total != 0 ? count / total : 0
+                activity[startDate] = report.rate
             }
         }
 

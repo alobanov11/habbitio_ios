@@ -26,7 +26,7 @@
     </entity>
     <entity name="Report" representedClassName="Report" syncable="YES" codeGenerationType="class">
         <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="total" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="rate" attributeType="Double" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="records" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Record" inverseName="report" inverseEntity="Record"/>
     </entity>
 </model>
