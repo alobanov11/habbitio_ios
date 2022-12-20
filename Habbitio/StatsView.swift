@@ -51,6 +51,17 @@ struct StatsView: View {
             }
 
             Section {
+                let weekdayStats = Report.rateByWeekdays(reports.suffix(period.rawValue))
+                Chart(Calendar.current.shortWeekdaySymbols.indices, id: \.self) {
+                    BarMark(
+                        x: .value("Name", Calendar.current.shortWeekdaySymbols[$0]),
+                        y: .value("Total", weekdayStats[$0])
+                    )
+                }
+                .frame(height: 250)
+            }
+
+            Section {
                 Chart(habits) {
                     BarMark(
                         x: .value("Name", $0.title ?? ""),

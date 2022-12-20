@@ -11,4 +11,16 @@ extension Report {
         let total = records.count
         return total == 0 ? 0 : Double(count) / Double(total)
     }
+
+    static func rateByWeekdays(_ reports: [Report]) -> [Double] {
+        reports
+            .reduce(into: Array(repeating: [Double](), count: Calendar.current.weekdaySymbols.count)) { result, report in
+                let day = Calendar.current.component(.weekday, from: report.date ?? .now) - 1
+                result[day].append(report.rate)
+            }
+            .reduce(into: [Double]()) { result, arr in
+                let total = arr.count
+                result.append(total == 0 ? 0 : arr.reduce(0, +) / Double(total))
+            }
+    }
 }
