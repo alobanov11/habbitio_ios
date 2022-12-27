@@ -24,7 +24,6 @@ struct HabitListView: View {
     @State private var records: [Record] = []
     @State private var animatedObject: ObjectIdentifier?
     @State private var error = false
-    @State private var isEditing = false
     @State private var sheetRoute: SheetRoute?
 
     private let changes = NotificationCenter.default.publisher(for: .init("changes"))
@@ -45,15 +44,6 @@ struct HabitListView: View {
 
             buttonControls
                 .padding(.vertical, 24)
-        }
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Button(action: { isEditing.toggle() }) {
-                    Text(isEditing ? "Done" : "Edit")
-                        .font(.system(.body, design: .monospaced))
-                }
-                .disabled(records.isEmpty)
-            }
         }
         .sheet(item: $sheetRoute) { route in
             NavigationView {
@@ -106,12 +96,15 @@ private extension HabitListView {
                         spacing: 16
                     ) {
                         ForEach(records) { record in
-                            HabitItemView(record: record, isEditing: isEditing)
+                            HabitItemView(record: record)
                                 .opacity(record.isEnabled == false ? 0.5 : record.done ? 0.5 : 1)
                                 .scaleEffect(animatedObject == record.id ? 0.9 : 1)
                                 .animation(.spring(response: 0.4, dampingFraction: 0.6))
                                 .onTapGesture {
                                     selectRecord(record)
+                                }
+                                .onLongPressGesture {
+                                    doneRecord(record)
                                 }
                         }
                     }
@@ -198,10 +191,11 @@ private extension HabitListView {
                 else {
                     record = Record(context: self.viewContext)
                     record.date = Date()
-                    record.isEnabled = (habit.days ?? []).contains(currentWeekday)
                     record.habit = habit
                     record.report = report
                 }
+
+                record.isEnabled = (habit.days ?? []).contains(currentWeekday)
 
                 return record
             }
@@ -223,19 +217,16 @@ private extension HabitListView {
 
         onMainThreadAsync(0.2) { self.animatedObject = nil }
 
-        if self.isEditing, let habit = record.habit {
+        if let habit = record.habit {
             self.sheetRoute = .editHabit(habit)
-        }
-        else if (record.habit?.days ?? []).contains(self.currentWeekday) == false {
-            let generator = UINotificationFeedbackGenerator()
-            generator.notificationOccurred(.warning)
-        }
-        else {
-            self.doneRecord(record)
         }
     }
 
     func doneRecord(_ record: Record) {
+        self.animatedObject = record.id
+
+        onMainThreadAsync(0.2) { self.animatedObject = nil }
+
         do {
             record.done.toggle()
             try self.viewContext.save()
@@ -254,8 +245,6 @@ private extension HabitListView {
 struct HabitItemView: View {
     @ObservedObject var record: Record
 
-    var isEditing: Bool
-
     var body: some View {
         VStack {
             Spacer()
@@ -273,7 +262,7 @@ struct HabitItemView: View {
         .aspectRatio(1, contentMode: .fit)
         .overlay(
             RoundedRectangle(cornerRadius: 24)
-                .stroke(style: StrokeStyle(lineWidth: 2, dash: isEditing ? [5] : []))
+                .stroke(style: StrokeStyle(lineWidth: 2, dash: []))
                 .fill(record.done ? Color.green : Color.accentColor)
         )
     }
