@@ -3,35 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E2269F5C294CB803001FA138 /* UnknownError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2269F5B294CB803001FA138 /* UnknownError.swift */; };
-		E2269F60294D095D001FA138 /* ArchiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2269F5F294D095D001FA138 /* ArchiveView.swift */; };
-		E238224C292781830089A9D9 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = E238224B292781830089A9D9 /* App.swift */; };
-		E2382250292781840089A9D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E238224F292781840089A9D9 /* Assets.xcassets */; };
-		E2382255292781840089A9D9 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2382254292781840089A9D9 /* PersistenceController.swift */; };
-		E2382258292781840089A9D9 /* Habbitio.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E2382256292781840089A9D9 /* Habbitio.xcdatamodeld */; };
-		E238226129278EA00089A9D9 /* HabitListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E238226029278EA00089A9D9 /* HabitListView.swift */; };
-		E238226329278EC10089A9D9 /* HabitEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E238226229278EC10089A9D9 /* HabitEditView.swift */; };
-		E2382266292792150089A9D9 /* CGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2382265292792150089A9D9 /* CGFloat.swift */; };
-		E2382271292B71E40089A9D9 /* DispatchQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2382270292B71E40089A9D9 /* DispatchQueue.swift */; };
-		E238227A292B90910089A9D9 /* View+ScenePhase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2382279292B90910089A9D9 /* View+ScenePhase.swift */; };
 		E2382282292B97B40089A9D9 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2382281292B97B40089A9D9 /* WidgetKit.framework */; };
 		E2382284292B97B40089A9D9 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2382283292B97B40089A9D9 /* SwiftUI.framework */; };
-		E2382287292B97B40089A9D9 /* WidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2382286292B97B40089A9D9 /* WidgetBundle.swift */; };
-		E2382289292B97B40089A9D9 /* Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2382288292B97B40089A9D9 /* Widget.swift */; };
-		E238228B292B97B50089A9D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E238228A292B97B50089A9D9 /* Assets.xcassets */; };
 		E238228F292B97B50089A9D9 /* HabbitioWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = E238227F292B97B40089A9D9 /* HabbitioWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		E2382294292B97E00089A9D9 /* DispatchQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2382270292B71E40089A9D9 /* DispatchQueue.swift */; };
-		E2382295292B97E50089A9D9 /* Habbitio.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E2382256292781840089A9D9 /* Habbitio.xcdatamodeld */; };
-		E2382296292B97E90089A9D9 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2382254292781840089A9D9 /* PersistenceController.swift */; };
-		E271961B2950BBA8000A961A /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E271961A2950BBA8000A961A /* StatsView.swift */; };
-		E271961F2950D8E4000A961A /* Report+Rate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E271961E2950D8E4000A961A /* Report+Rate.swift */; };
-		E27196202950D90E000A961A /* Report+Rate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E271961E2950D8E4000A961A /* Report+Rate.swift */; };
-		E27196222950DB99000A961A /* Habit+Rate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27196212950DB99000A961A /* Habit+Rate.swift */; };
-		E2EAA704294F1E2B0081AEBB /* View+Hidden.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EAA703294F1E2B0081AEBB /* View+Hidden.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,30 +37,36 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		E2269F5B294CB803001FA138 /* UnknownError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnknownError.swift; sourceTree = "<group>"; };
-		E2269F5F294D095D001FA138 /* ArchiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveView.swift; sourceTree = "<group>"; };
 		E2382248292781830089A9D9 /* Habbitio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Habbitio.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		E238224B292781830089A9D9 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
-		E238224F292781840089A9D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		E2382254292781840089A9D9 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
-		E2382257292781840089A9D9 /* Habbitio.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Habbitio.xcdatamodel; sourceTree = "<group>"; };
-		E238226029278EA00089A9D9 /* HabitListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitListView.swift; sourceTree = "<group>"; };
-		E238226229278EC10089A9D9 /* HabitEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitEditView.swift; sourceTree = "<group>"; };
-		E2382265292792150089A9D9 /* CGFloat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGFloat.swift; sourceTree = "<group>"; };
-		E2382270292B71E40089A9D9 /* DispatchQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchQueue.swift; sourceTree = "<group>"; };
-		E2382279292B90910089A9D9 /* View+ScenePhase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+ScenePhase.swift"; sourceTree = "<group>"; };
 		E238227F292B97B40089A9D9 /* HabbitioWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = HabbitioWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2382281292B97B40089A9D9 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		E2382283292B97B40089A9D9 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
-		E2382286292B97B40089A9D9 /* WidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetBundle.swift; sourceTree = "<group>"; };
-		E2382288292B97B40089A9D9 /* Widget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Widget.swift; sourceTree = "<group>"; };
-		E238228A292B97B50089A9D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		E238228C292B97B50089A9D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E271961A2950BBA8000A961A /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
-		E271961E2950D8E4000A961A /* Report+Rate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Report+Rate.swift"; sourceTree = "<group>"; };
-		E27196212950DB99000A961A /* Habit+Rate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Habit+Rate.swift"; sourceTree = "<group>"; };
-		E2EAA703294F1E2B0081AEBB /* View+Hidden.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Hidden.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		E25B75332DF828B500DFCB7A /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = E238227E292B97B40089A9D9 /* HabbitioWidgetExtension */;
+		};
+		E25B75382DF829D300DFCB7A /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				SwiftData/DataManager.swift,
+				SwiftData/Habit.swift,
+				SwiftData/Record.swift,
+				SwiftData/Report.swift,
+			);
+			target = E238227E292B97B40089A9D9 /* HabbitioWidgetExtension */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		E25B75112DF826FA00DFCB7A /* Habbitio */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (E25B75382DF829D300DFCB7A /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Habbitio; sourceTree = "<group>"; };
+		E25B75252DF8271200DFCB7A /* HabbitioWidget */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (E25B75332DF828B500DFCB7A /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = HabbitioWidget; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		E2382245292781830089A9D9 /* Frameworks */ = {
@@ -107,8 +91,8 @@
 		E238223F292781830089A9D9 = {
 			isa = PBXGroup;
 			children = (
-				E238224A292781830089A9D9 /* Habbitio */,
-				E2382285292B97B40089A9D9 /* HabbitioWidget */,
+				E25B75112DF826FA00DFCB7A /* Habbitio */,
+				E25B75252DF8271200DFCB7A /* HabbitioWidget */,
 				E2382280292B97B40089A9D9 /* Frameworks */,
 				E2382249292781830089A9D9 /* Products */,
 			);
@@ -124,36 +108,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		E238224A292781830089A9D9 /* Habbitio */ = {
-			isa = PBXGroup;
-			children = (
-				E23822642927920A0089A9D9 /* Extensions */,
-				E238224F292781840089A9D9 /* Assets.xcassets */,
-				E2382256292781840089A9D9 /* Habbitio.xcdatamodeld */,
-				E2382254292781840089A9D9 /* PersistenceController.swift */,
-				E238224B292781830089A9D9 /* App.swift */,
-				E238226029278EA00089A9D9 /* HabitListView.swift */,
-				E238226229278EC10089A9D9 /* HabitEditView.swift */,
-				E2269F5F294D095D001FA138 /* ArchiveView.swift */,
-				E271961A2950BBA8000A961A /* StatsView.swift */,
-			);
-			path = Habbitio;
-			sourceTree = "<group>";
-		};
-		E23822642927920A0089A9D9 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				E2382279292B90910089A9D9 /* View+ScenePhase.swift */,
-				E2EAA703294F1E2B0081AEBB /* View+Hidden.swift */,
-				E2382265292792150089A9D9 /* CGFloat.swift */,
-				E2382270292B71E40089A9D9 /* DispatchQueue.swift */,
-				E2269F5B294CB803001FA138 /* UnknownError.swift */,
-				E271961E2950D8E4000A961A /* Report+Rate.swift */,
-				E27196212950DB99000A961A /* Habit+Rate.swift */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
 		E2382280292B97B40089A9D9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -161,17 +115,6 @@
 				E2382283292B97B40089A9D9 /* SwiftUI.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		E2382285292B97B40089A9D9 /* HabbitioWidget */ = {
-			isa = PBXGroup;
-			children = (
-				E238228C292B97B50089A9D9 /* Info.plist */,
-				E238228A292B97B50089A9D9 /* Assets.xcassets */,
-				E2382286292B97B40089A9D9 /* WidgetBundle.swift */,
-				E2382288292B97B40089A9D9 /* Widget.swift */,
-			);
-			path = HabbitioWidget;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -191,6 +134,9 @@
 			dependencies = (
 				E238228E292B97B50089A9D9 /* PBXTargetDependency */,
 			);
+			fileSystemSynchronizedGroups = (
+				E25B75112DF826FA00DFCB7A /* Habbitio */,
+			);
 			name = Habbitio;
 			productName = Habbitio;
 			productReference = E2382248292781830089A9D9 /* Habbitio.app */;
@@ -207,6 +153,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				E25B75252DF8271200DFCB7A /* HabbitioWidget */,
 			);
 			name = HabbitioWidgetExtension;
 			productName = HabitioWidgetExtension;
@@ -255,7 +204,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E2382250292781840089A9D9 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,7 +211,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E238228B292B97B50089A9D9 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,20 +221,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E2382255292781840089A9D9 /* PersistenceController.swift in Sources */,
-				E2382266292792150089A9D9 /* CGFloat.swift in Sources */,
-				E238224C292781830089A9D9 /* App.swift in Sources */,
-				E271961F2950D8E4000A961A /* Report+Rate.swift in Sources */,
-				E238226129278EA00089A9D9 /* HabitListView.swift in Sources */,
-				E2269F5C294CB803001FA138 /* UnknownError.swift in Sources */,
-				E238226329278EC10089A9D9 /* HabitEditView.swift in Sources */,
-				E238227A292B90910089A9D9 /* View+ScenePhase.swift in Sources */,
-				E2269F60294D095D001FA138 /* ArchiveView.swift in Sources */,
-				E271961B2950BBA8000A961A /* StatsView.swift in Sources */,
-				E2382271292B71E40089A9D9 /* DispatchQueue.swift in Sources */,
-				E2382258292781840089A9D9 /* Habbitio.xcdatamodeld in Sources */,
-				E27196222950DB99000A961A /* Habit+Rate.swift in Sources */,
-				E2EAA704294F1E2B0081AEBB /* View+Hidden.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,12 +228,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E2382289292B97B40089A9D9 /* Widget.swift in Sources */,
-				E2382287292B97B40089A9D9 /* WidgetBundle.swift in Sources */,
-				E2382294292B97E00089A9D9 /* DispatchQueue.swift in Sources */,
-				E27196202950D90E000A961A /* Report+Rate.swift in Sources */,
-				E2382295292B97E50089A9D9 /* Habbitio.xcdatamodeld in Sources */,
-				E2382296292B97E90089A9D9 /* PersistenceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -432,7 +359,6 @@
 		E238225C292781840089A9D9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Habbitio/Habbitio.entitlements;
@@ -446,7 +372,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -466,7 +392,6 @@
 		E238225D292781840089A9D9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Habbitio/Habbitio.entitlements;
@@ -480,7 +405,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -510,7 +435,7 @@
 				INFOPLIST_FILE = HabbitioWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = HabbitioWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -539,7 +464,7 @@
 				INFOPLIST_FILE = HabbitioWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = HabbitioWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -586,19 +511,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		E2382256292781840089A9D9 /* Habbitio.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				E2382257292781840089A9D9 /* Habbitio.xcdatamodel */,
-			);
-			currentVersion = E2382257292781840089A9D9 /* Habbitio.xcdatamodel */;
-			path = Habbitio.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = E2382240292781830089A9D9 /* Project object */;
 }

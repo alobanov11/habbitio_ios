@@ -1,18 +1,14 @@
-//
-//  Created by Антон Лобанов on 16.12.2022.
-//
-
+import SwiftData
 import SwiftUI
 
 struct ArchiveView: View {
-    @Environment(\.managedObjectContext) private var viewContext
+    @Environment(\.modelContext) private var modelContext
 
-    @FetchRequest(
-        sortDescriptors: [SortDescriptor(\.createdDate)],
-        predicate: NSPredicate(format: "isArchived == %@", NSNumber(value: true)),
-        animation: .default
+    @Query(
+        filter: #Predicate<Habit> { $0.isArchived == true },
+        sort: \.createdDate
     )
-    private var habits: FetchedResults<Habit>
+    private var habits: [Habit]
 
     @State private var error: Error?
 
@@ -21,11 +17,10 @@ struct ArchiveView: View {
             if habits.isEmpty {
                 Text("Archive is empty")
                     .font(.system(.body, design: .monospaced))
-            }
-            else {
+            } else {
                 List {
                     ForEach(habits) { habit in
-                        Text(habit.title ?? "")
+                        Text(habit.title)
                             .swipeActions(allowsFullSwipe: false) {
                                 Button {
                                     undo(habit)
@@ -52,28 +47,26 @@ struct ArchiveView: View {
     }
 }
 
-private extension ArchiveView {
-    func undo(_ habit: Habit) {
+extension ArchiveView {
+    fileprivate func undo(_ habit: Habit) {
         habit.isArchived = false
 
         do {
-            try self.viewContext.save()
+            try modelContext.save()
             NotificationCenter.default.post(name: .init("changes"), object: nil)
-        }
-        catch {
+        } catch {
             print(error)
             self.error = error
         }
     }
 
-    func delete(_ habit: Habit) {
-        self.viewContext.delete(habit)
+    fileprivate func delete(_ habit: Habit) {
+        modelContext.delete(habit)
 
         do {
-            try self.viewContext.save()
+            try modelContext.save()
             NotificationCenter.default.post(name: .init("changes"), object: nil)
-        }
-        catch {
+        } catch {
             print(error)
             self.error = error
         }
@@ -85,6 +78,6 @@ struct ArchivePreview: PreviewProvider {
         NavigationView {
             ArchiveView()
         }
-        .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        .modelContainer(DataManager.preview.modelContainer)
     }
 }

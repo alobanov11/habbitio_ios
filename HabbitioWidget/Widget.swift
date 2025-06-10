@@ -1,59 +1,55 @@
-//
-//  Created by Антон Лобанов on 21.11.2022.
-//
-
+import SwiftData
 import SwiftUI
 import WidgetKit
-import CoreData
 
 struct Provider: TimelineProvider {
-    let viewContext: NSManagedObjectContext
+    let modelContext: ModelContext
 
     func placeholder(in _: Context) -> Entry { .preview }
 
     func getSnapshot(in context: Context, completion: @escaping (Entry) -> Void) {
         if context.isPreview {
             completion(self.placeholder(in: context))
-        }
-        else {
+        } else {
             completion(.init(date: Date(), activity: self.fetchActivity()))
         }
     }
 
     func getTimeline(in _: Context, completion: @escaping (Timeline<Entry>) -> Void) {
-        completion(Timeline(
-            entries: [.init(date: Date(), activity: self.fetchActivity())],
-            policy: .after(Date().addingTimeInterval(300))
-        ))
+        completion(
+            Timeline(
+                entries: [.init(date: Date(), activity: self.fetchActivity())],
+                policy: .after(Date().addingTimeInterval(300))
+            ))
     }
 
     private func fetchActivity() -> [Double] {
         let maxDays = 49
 
-        let fetchRequest = Report.fetchRequest()
-        let sort = NSSortDescriptor(key: #keyPath(Report.date), ascending: true)
+        let fetchDescriptor = FetchDescriptor<Report>(
+            sortBy: [SortDescriptor(\.date)]
+        )
 
-        fetchRequest.sortDescriptors = [sort]
-
-        let reports = try? self.viewContext.fetch(fetchRequest)
+        let reports = try? modelContext.fetch(fetchDescriptor)
 
         var activity: [Date: Double] = [:]
 
-        for i in 0 ..< maxDays {
+        for i in 0..<maxDays {
             let date = Calendar.current.date(byAdding: .day, value: -i, to: Date())!
             let startDate = Calendar.current.startOfDay(for: date)
             activity[startDate] = 0
         }
 
         for report in reports?.suffix(maxDays) ?? [] {
-            let startDate = Calendar.current.startOfDay(for: report.date!)
+            let startDate = Calendar.current.startOfDay(for: report.date)
 
             if activity[startDate] != nil {
                 activity[startDate] = report.rate
             }
         }
 
-        let result = activity
+        let result =
+        activity
             .map { ($0.key, $0.value) }
             .sorted { $0.0 < $1.0 }
             .map { $0.1 }
@@ -72,7 +68,7 @@ struct HabbitioWidgetEntryView: View {
 
     var body: some View {
         LazyVGrid(columns: Array(repeating: GridItem(), count: 7)) {
-            ForEach(0 ..< 49) { value in
+            ForEach(0..<49) { value in
                 let activity = entry.activity[value]
                 RoundedRectangle(cornerRadius: 2)
                     .fill(activity == 0 ? Color.gray.opacity(0.2) : Color.green.opacity(activity))
@@ -85,10 +81,11 @@ struct HabbitioWidgetEntryView: View {
 
 struct HabbitioWidget: Widget {
     let kind: String = "HabbitioWidget"
-    let persistence = PersistenceController.shared
+    let dataManager = DataManager.shared
 
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: kind, provider: Provider(viewContext: persistence.container.viewContext)) { entry in
+        StaticConfiguration(kind: kind, provider: Provider(modelContext: dataManager.modelContext)) {
+            entry in
             HabbitioWidgetEntryView(entry: entry)
         }
         .configurationDisplayName("Habbitio widget")
@@ -106,6 +103,6 @@ struct HabbitioWidget_Previews: PreviewProvider {
 
 extension Entry {
     static var preview: Entry {
-        .init(date: Date(), activity: (0 ..< 49).map { _ in Double.random(in: 0 ... 1) })
+        .init(date: Date(), activity: (0..<49).map { _ in Double.random(in: 0...1) })
     }
 }
