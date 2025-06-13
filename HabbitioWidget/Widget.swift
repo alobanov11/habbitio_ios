@@ -85,13 +85,14 @@ struct HabbitioWidgetEntryView: View {
                     .fill(
 						activity == 0
 							? Color.backgroundSecondary
-							: Color.backgroundAccent
+							: Color.backgroundAccent.opacity(activity)
 					)
 					.aspectRatio(1, contentMode: .fit)
             }
         }
 		.frame(maxWidth: .infinity, maxHeight: .infinity)
 		.clipped()
+		.containerBackground(Color.widgetBackground, for: .widget)
     }
 }
 
