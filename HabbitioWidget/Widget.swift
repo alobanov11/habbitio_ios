@@ -75,20 +75,28 @@ struct HabbitioWidgetEntryView: View {
 	var entry: Provider.Entry
 
     var body: some View {
-        LazyVGrid(columns: Array(repeating: GridItem(), count: 7)) {
+		LazyVGrid(
+			columns: Array(repeating: GridItem(.flexible(), spacing: 2), count: 7),
+			spacing: 2
+		) {
             ForEach(0..<49) { value in
                 let activity = entry.activity[value]
-                RoundedRectangle(cornerRadius: 2)
-                    .fill(activity == 0 ? Color.gray.opacity(0.2) : Color.green.opacity(activity))
-                    .aspectRatio(1.0, contentMode: .fit)
+                RoundedRectangle(cornerRadius: 4)
+                    .fill(
+						activity == 0
+							? Color.backgroundSecondary
+							: Color.backgroundAccent
+					)
+					.aspectRatio(1, contentMode: .fit)
             }
         }
-        .padding()
+		.frame(maxWidth: .infinity, maxHeight: .infinity)
+		.clipped()
     }
 }
 
 struct HabbitioWidget: Widget {
-    
+
 	let kind: String = "HabbitioWidget"
     let store = Store.shared
 
