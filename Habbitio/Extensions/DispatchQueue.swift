@@ -1,7 +1,3 @@
-//
-//  Created by Антон Лобанов on 21.11.2022.
-//
-
 import Foundation
 
 func onMainThread(_ block: @escaping () -> Void) {

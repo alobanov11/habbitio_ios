@@ -1,71 +1,185 @@
-# Habbitio iOS App
+# Habbitio iOS
 
-Приложение для отслеживания привычек на iOS с использованием SwiftUI и SwiftData.
+A modern habit tracking iOS application built with SwiftUI that helps users build and maintain healthy habits through daily tracking, analytics, and smart notifications.
 
-## Функциональность
+## Overview
 
-- ✅ Создание и редактирование привычек с категориями
-- ✅ Настройка дней недели для каждой привычки
-- ✅ Система напоминаний с локальными уведомлениями
-- ✅ Архивирование привычек с возможностью восстановления
-- ✅ Статистика выполнения с графиками
-- ✅ Виджет для экрана блокировки с тепловой картой активности
-- ✅ Поддержка App Groups для совместного доступа к данным
-
-## Технологии
-
-- **SwiftUI** - пользовательский интерфейс
-- **SwiftData** - хранение данных (iOS 17.0+)
-- **UserNotifications** - система напоминаний
-- **WidgetKit** - виджеты для главного экрана
-- **Swift Charts** - графики статистики
-
-## Минимальные требования
-
-- iOS 17.0+
-- Xcode 15.0+
-
-## Установка
-
-1. Склонируйте репозиторий
-2. Откройте `Habbitio.xcodeproj` в Xcode
-3. Запустите проект на симуляторе или устройстве
-
-## Архитектура
-
-Приложение следует паттерну MVVM с использованием:
-- SwiftData модели для данных
-- SwiftUI Views для интерфейса
-- Singleton DataManager для управления данными
-- NotificationCenter для координации между экранами
-
-## Миграция с Core Data
-
-В версии 2.0 приложение было мигрировано с Core Data на SwiftData для упрощения кода и лучшей интеграции со SwiftUI. Все пользовательские данные совместимы между версиями.
-
-Смотрите подробную документацию в `doc.md` для изучения технических деталей.
+Habbitio is a comprehensive habit tracker designed to help users establish and maintain positive daily routines. The app provides an intuitive interface for creating habits, tracking daily progress, analyzing patterns, and staying motivated through visual statistics and smart reminders.
 
 ## Features
 
-- Pure SwiftUI
-- No third party libraries
-- WidgetKit
-- Core Data
+### Core Functionality
+- **Habit Management**: Create, edit, and organize habits with custom categories
+- **Daily Tracking**: Simple one-tap interface to mark habits as completed
+- **Weekly Scheduling**: Configure which days of the week each habit should be active
+- **Smart Notifications**: Set custom reminders with personalized messages
+- **Habit Archiving**: Archive completed or discontinued habits without losing data
 
-## Requirements
+### Analytics & Insights
+- **Progress Visualization**: Interactive charts showing completion rates over time
+- **Weekly Patterns**: Analyze performance by day of the week
+- **Individual Habit Statistics**: Track success rates for specific habits
+- **Multiple Time Periods**: View statistics for week, month, year, or all-time
+- **Completion Rate Tracking**: Monitor overall habit consistency
 
-- iOS 16+
-- Swift 5.7
+### User Experience
+- **Native iOS Design**: Built with SwiftUI following Apple's design guidelines
+- **Widget Support**: Home screen widgets for quick habit tracking
+- **Category Organization**: Group habits by custom categories for better organization
+- **Dark/Light Mode**: Adaptive interface that respects system preferences
+- **Accessibility**: Full support for iOS accessibility features
 
-## History and Plans
+## Technical Architecture
 
-- [x] Create and upload to AppStore
-- [ ] Create onboarding screen
-- [ ] Integrate fastlane / firebase
-- [ ] Add analytics
-- [ ] Add unit tests
+### Architecture Pattern
+The application follows **Clean Architecture** principles with clear separation of concerns:
 
-## Links
+```
+┌─────────────────┐
+│   Presentation  │  SwiftUI Views + Routes
+│     Layer       │
+├─────────────────┤
+│   Business      │  Use Cases + Domain Logic
+│     Logic       │
+├─────────────────┤
+│   Data Layer    │  Store + Contracts
+└─────────────────┘
+```
 
-- [AppStore](https://apps.apple.com/us/app/habbitio/id6444619357)
-- [Site](https://alobanov11.ru/)
+### Key Components
+
+#### Presentation Layer
+- **Routes**: Screen-level SwiftUI views (`HabitListRoute`, `HabitEditRoute`, `StatsRoute`, `ArchiveRoute`)
+- **Views**: Reusable UI components (`NavigationBar`, `PrimaryButton`, `InputTextView`, etc.)
+- **Dependency Injection**: Environment-based DI system for clean testability
+
+#### Business Logic
+- **Use Cases**: Encapsulated business operations for each route
+- **Domain Models**: Pure Swift structs representing business entities
+- **Context**: Centralized dependency container managing use case instances
+
+#### Data Layer
+- **SwiftData Integration**: Modern persistence framework for iOS 17+
+- **Repository Pattern**: `Store` class implementing `IStore` protocol
+- **Data Models**: SwiftData models with automatic relationship management
+
+### Technology Stack
+
+#### Core Technologies
+- **SwiftUI**: Modern declarative UI framework
+- **SwiftData**: Apple's modern data persistence framework
+- **Swift Charts**: Native charting framework for analytics
+- **WidgetKit**: Home screen widget support
+- **UserNotifications**: Local notification scheduling
+
+#### Development Tools
+- **Swift Package Manager**: Modular architecture with local packages
+- **Xcode 15+**: Native iOS development environment
+- **iOS 17+**: Minimum deployment target
+
+#### Architecture Patterns
+- **MVVM-C**: Model-View-ViewModel with Coordinator pattern
+- **Dependency Injection**: Environment-based DI for loose coupling
+- **Repository Pattern**: Abstracted data access layer
+- **Use Case Pattern**: Business logic encapsulation
+
+## Project Structure
+
+```
+Habbitio/
+├── App/                    # Application entry point
+│   ├── App.swift          # Main app struct
+│   └── Context.swift      # DI container
+├── Routes/                # Screen-level views
+│   ├── HabitListRoute.swift
+│   ├── HabitEditRoute.swift
+│   ├── StatsRoute.swift
+│   └── ArchiveRoute.swift
+├── Views/                 # Reusable UI components
+│   ├── NavigationBar.swift
+│   ├── PrimaryButton.swift
+│   ├── InputTextView.swift
+│   └── ...
+├── Extensions/            # Swift extensions
+└── Resources/             # Assets and fonts
+
+Storage/                   # Data layer package
+├── Contracts/             # Domain models & protocols
+│   ├── Habit.swift
+│   ├── Record.swift
+│   ├── Report.swift
+│   └── IStore.swift
+└── Store/                 # SwiftData implementation
+    ├── Store.swift
+    └── [SwiftData Models]
+
+HabbitioWidget/            # iOS widget extension
+└── Assets.xcassets/
+```
+
+## Data Models
+
+### Core Entities
+
+#### Habit
+```swift
+struct Habit {
+    var title: String           # Habit name
+    var category: String?       # Optional category
+    var days: [String]         # Active weekdays
+    var isArchived: Bool       # Archive status
+    var isRemainderOn: Bool    # Notification enabled
+    var reminderDate: Date?    # Notification time
+    var reminderText: String?  # Custom reminder message
+}
+```
+
+#### Record
+```swift
+struct Record {
+    var date: Date    # Tracking date
+    var habit: Habit  # Associated habit
+    var done: Bool    # Completion status
+    var isEnabled: Bool # Active on this day
+}
+```
+
+#### Report
+```swift
+struct Report {
+    var date: Date           # Report date
+    var records: [Record]    # Daily records
+    var rate: Double         # Completion percentage
+}
+```
+
+## Getting Started
+
+### Prerequisites
+- Xcode 15.0 or later
+- iOS 17.0 or later
+- macOS 14.0 or later (for development)
+
+### Installation
+1. Clone the repository
+2. Open `Habbitio.xcodeproj` in Xcode
+3. Build and run the project
+
+### Development Setup
+The project uses Swift Package Manager for modular architecture. The `Storage` package contains the data layer and can be developed independently.
+
+## App Store Information
+
+**Category**: Productivity / Health & Fitness
+**Platform**: iOS 17.0+
+**Languages**: English with localization support
+**Widget Support**: Yes
+**iCloud Sync**: Not implemented (local storage only)
+
+## Contributing
+
+This appears to be a personal project. For contributions, please follow standard iOS development practices and maintain the existing architectural patterns.
+
+## License
+
+Please refer to the project's license file for usage terms and conditions.

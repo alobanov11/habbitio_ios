@@ -1,9 +1,10 @@
-import SwiftData
 import SwiftUI
 import WidgetKit
+import Store
 
 struct Provider: TimelineProvider {
-    let modelContext: ModelContext
+
+	let store: Store
 
     func placeholder(in _: Context) -> Entry { .preview }
 
@@ -11,60 +12,67 @@ struct Provider: TimelineProvider {
         if context.isPreview {
             completion(self.placeholder(in: context))
         } else {
-            completion(.init(date: Date(), activity: self.fetchActivity()))
+			Task {
+				await completion(.init(date: Date(), activity: fetchActivity()))
+			}
         }
     }
 
     func getTimeline(in _: Context, completion: @escaping (Timeline<Entry>) -> Void) {
-        completion(
-            Timeline(
-                entries: [.init(date: Date(), activity: self.fetchActivity())],
-                policy: .after(Date().addingTimeInterval(300))
-            ))
+		Task {
+			completion(
+				Timeline(
+					entries: [
+						.init(
+							date: Date(),
+							activity: await fetchActivity()
+						)
+					],
+					policy: .after(Date().addingTimeInterval(300))
+				)
+			)
+		}
     }
 
-    private func fetchActivity() -> [Double] {
-        let maxDays = 49
+	func fetchActivity() async -> [Double] {
+		let maxDays = 49
+		let reports = try? await store.fetchReports()
 
-        let fetchDescriptor = FetchDescriptor<Report>(
-            sortBy: [SortDescriptor(\.date)]
-        )
+		var activity: [Date: Double] = [:]
 
-        let reports = try? modelContext.fetch(fetchDescriptor)
+		for i in 0..<maxDays {
+			let date = Calendar.current.date(byAdding: .day, value: -i, to: Date())!
+			let startDate = Calendar.current.startOfDay(for: date)
+			activity[startDate] = 0
+		}
 
-        var activity: [Date: Double] = [:]
+		for report in reports?.suffix(maxDays) ?? [] {
+			let startDate = Calendar.current.startOfDay(for: report.date)
 
-        for i in 0..<maxDays {
-            let date = Calendar.current.date(byAdding: .day, value: -i, to: Date())!
-            let startDate = Calendar.current.startOfDay(for: date)
-            activity[startDate] = 0
-        }
+			if activity[startDate] != nil {
+				activity[startDate] = report.rate
+			}
+		}
 
-        for report in reports?.suffix(maxDays) ?? [] {
-            let startDate = Calendar.current.startOfDay(for: report.date)
+		let result =
+		activity
+			.map { ($0.key, $0.value) }
+			.sorted { $0.0 < $1.0 }
+			.map { $0.1 }
 
-            if activity[startDate] != nil {
-                activity[startDate] = report.rate
-            }
-        }
-
-        let result =
-        activity
-            .map { ($0.key, $0.value) }
-            .sorted { $0.0 < $1.0 }
-            .map { $0.1 }
-
-        return result
-    }
+		return result
+	}
 }
 
 struct Entry: TimelineEntry {
-    let date: Date
+
+	let date: Date
     let activity: [Double]
 }
 
 struct HabbitioWidgetEntryView: View {
-    var entry: Provider.Entry
+
+	var entry: Provider.Entry
 
     var body: some View {
         LazyVGrid(columns: Array(repeating: GridItem(), count: 7)) {
@@ -80,11 +88,12 @@ struct HabbitioWidgetEntryView: View {
 }
 
 struct HabbitioWidget: Widget {
-    let kind: String = "HabbitioWidget"
-    let dataManager = DataManager.shared
+    
+	let kind: String = "HabbitioWidget"
+    let store = Store.shared
 
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: kind, provider: Provider(modelContext: dataManager.modelContext)) {
+        StaticConfiguration(kind: kind, provider: Provider(store: store)) {
             entry in
             HabbitioWidgetEntryView(entry: entry)
         }
@@ -95,14 +104,16 @@ struct HabbitioWidget: Widget {
 }
 
 struct HabbitioWidget_Previews: PreviewProvider {
-    static var previews: some View {
+
+	static var previews: some View {
         HabbitioWidgetEntryView(entry: .preview)
             .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
 }
 
 extension Entry {
-    static var preview: Entry {
+
+	static var preview: Entry {
         .init(date: Date(), activity: (0..<49).map { _ in Double.random(in: 0...1) })
     }
 }
