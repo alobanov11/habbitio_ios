@@ -96,6 +96,17 @@ struct HabitListRoute: View {
 			TabsView()
 				.safeAreaPadding(.bottom)
 		}
+		.onForeground {
+			Task {
+				do {
+					report = try await useCase.loadReport()
+				} catch {
+					withAnimation {
+						self.error = error
+					}
+				}
+			}
+		}
 		.onAppear {
 			Task {
 				do {

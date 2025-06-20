@@ -312,6 +312,10 @@ extension HabitEditRoute.UseCase {
 	init(store: IStore) {
 		let notificationCenter = UNUserNotificationCenter.current()
 		let registerHabitNotifications: (Habit) -> [String] = { habit in
+			notificationCenter.removePendingNotificationRequests(
+				withIdentifiers: habit.notifications
+			)
+
 			guard
 				habit.isRemainderOn,
 				let reminderText = habit.reminderText,
