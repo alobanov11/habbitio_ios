@@ -5,12 +5,7 @@ import Store
 @main
 struct HabbitioApp: App {
 
-	let context: Context
-
-	init() {
-		let store = Store.shared
-		context = Context(store: store)
-	}
+	let context = Context()
 
     var body: some Scene {
         WindowGroup {

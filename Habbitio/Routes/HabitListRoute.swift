@@ -5,9 +5,13 @@ struct HabitListRoute: View {
 
 	struct UseCase {
 
+		var invalidateNotifications: () async throws -> Void
 		var loadReport: () async throws -> Report
 		var toggleRecord: (Record) async throws -> Void
 	}
+
+	@AppStorage("isNotificationsInvalidated")
+	var isNotificationsInvalidated = false
 
 	@Environment(\.context.habitList)
 	var useCase
@@ -111,6 +115,10 @@ struct HabitListRoute: View {
 			Task {
 				do {
 					report = try await useCase.loadReport()
+					if !isNotificationsInvalidated {
+						try? await useCase.invalidateNotifications()
+						isNotificationsInvalidated = true
+					}
 				} catch {
 					withAnimation {
 						self.error = error
@@ -225,7 +233,7 @@ private extension HabitListRoute {
 
 extension HabitListRoute.UseCase {
 
-	init(store: IStore) {
+	init(store: IStore, habitNotificationService: IHabitNotificationService) {
 		loadReport = {
 			try await store.report()
 		}
@@ -233,6 +241,13 @@ extension HabitListRoute.UseCase {
 			var record = record
 			record.done.toggle()
 			try await store.saveRecord(record)
+		}
+		invalidateNotifications = {
+			let habits = try await store.fetchHabits()
+			for var habit in habits {
+				habit.notifications = try await habitNotificationService.scheduleNotifications(for: habit)
+				try await store.saveHabit(habit)
+			}
 		}
 	}
 
@@ -273,6 +288,7 @@ extension HabitListRoute.UseCase {
 			)
 		}
 		toggleRecord = { _ in }
+		invalidateNotifications = {}
 	}
 }
 

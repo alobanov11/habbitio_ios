@@ -309,54 +309,8 @@ struct HabitEditRoute: View {
 
 extension HabitEditRoute.UseCase {
 
-	init(store: IStore) {
+	init(store: IStore, habitNotificationService: IHabitNotificationService) {
 		let notificationCenter = UNUserNotificationCenter.current()
-		let registerHabitNotifications: (Habit) -> [String] = { habit in
-			notificationCenter.removePendingNotificationRequests(
-				withIdentifiers: habit.notifications
-			)
-
-			guard
-				habit.isRemainderOn,
-				let reminderText = habit.reminderText,
-				let reminderDate = habit.reminderDate
-			else {
-				return []
-			}
-
-			let content = UNMutableNotificationContent()
-			content.title = habit.title
-			content.subtitle = reminderText
-			content.sound = .default
-
-			var notifications: [String] = []
-			let calendar = Calendar.current
-			let weekdaySymbols = calendar.shortWeekdaySymbols
-
-			for indexOfDay in 0..<weekdaySymbols.count {
-				if habit.days.contains(weekdaySymbols[indexOfDay]) == false {
-					continue
-				}
-
-				let id = UUID().uuidString
-				let hour = calendar.component(.hour, from: reminderDate)
-				let minute = calendar.component(.minute, from: reminderDate)
-
-				var components = DateComponents()
-				components.hour = hour
-				components.minute = minute
-				components.weekday = indexOfDay + 1
-
-				let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: true)
-				let request = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
-
-				UNUserNotificationCenter.current().add(request)
-
-				notifications.append(id)
-			}
-
-			return notifications
-		}
 		deleteHabit = { habit in
 			notificationCenter.removePendingNotificationRequests(
 				withIdentifiers: habit.notifications
@@ -374,12 +328,12 @@ extension HabitEditRoute.UseCase {
 		unarchiveHabit = { habit in
 			var habit = habit
 			habit.isArchived = false
-			habit.notifications = registerHabitNotifications(habit)
+			habit.notifications = try await habitNotificationService.scheduleNotifications(for: habit)
 			try await store.saveHabit(habit)
 		}
 		saveHabit = { habit in
 			var habit = habit
-			habit.notifications = registerHabitNotifications(habit)
+			habit.notifications = try await habitNotificationService.scheduleNotifications(for: habit)
 			try await store.saveHabit(habit)
 		}
 		requestNotificationStatus = {
